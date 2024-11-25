@@ -1,7 +1,8 @@
-<h1 align="center">RETO01 - Simulador de Viaje Interplanetario 🚀</h1>
+<h1 align="center">RETO 01 - Simulador de Viaje Interplanetario 🚀</h1>
 
 <h3>Introducción</h3>
 <p text-align="justify">Este programa simula un viaje interplanetario en el que el usuario selecciona un planeta y la cantidad de combustible para el viaje. El programa evalúa si es posible llegar al destino con el combustible proporcionado y realiza una cuenta regresiva de tiempo y consumo de combustible en paralelo utilizando hilos y sincronización.</p>
+<a href="#">Puedes encontrar la presentación acá mismo...</a>
 
 <p align="center">
   <a href="https://skillicons.dev">
@@ -20,6 +21,7 @@
 </ul>
 
 <section id="planets">
+<h4>Planetas, estrellas y otros seres..</h4>
 <ul>
 <li class="planet">Mercurio</li>
 <li class="planet">Venus</li>
