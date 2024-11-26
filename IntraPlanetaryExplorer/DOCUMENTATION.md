@@ -17,7 +17,7 @@ Velocidad Máxima: (maxSpeed)
 162,000 km/h.
 ```
 ```
-Capacidad de pasajeros: (crewCapacity)
+Capacidad de tripulantes: (crewCapacity)
 2-4-6-8-etc
 ```
 ```
@@ -25,15 +25,15 @@ Control de gravedad: (gravityControl)
 ?%
 ```
 ```
-Cabacidad de combustible: (fuelCapacity)
+Capacidad de combustible: (fuelCapacity)
 ?%
 ```
 ```
-Sistema de daño: (damage)
+Daño actual: (damage)
 ?%
 ```
 ```
-Probabilidad de actividad: (eventProbability)
+Dureza / Resistencia de la nave: (toughness)
 ?%
 ```
 #### o Cálculo:
