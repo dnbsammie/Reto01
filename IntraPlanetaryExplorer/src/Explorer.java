@@ -286,6 +286,7 @@ public class Explorer {
         System.out.println("4. Opciones.");
         System.out.println("5. Salir de la nave.");
         System.out.print("\nElige una opción: \n");
+        System.out.println(".-.)");
     }
 
     // Seleccion del planeta a donde quiere viajar //
@@ -321,7 +322,6 @@ public class Explorer {
     }
 
     public static void spaceTrip(Scanner input) {
-
     }
 
     public static void settingsManager(Scanner input) {
