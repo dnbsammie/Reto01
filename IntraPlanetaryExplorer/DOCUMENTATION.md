@@ -63,7 +63,90 @@ Una vez ingresado, el usuario encontrara un menú interactivo que le permitira e
 
 Uso de metodos try-catch para evitar una opción invalida por parte del usuario
 
-### 5. Interacción en el viaje
+ ### 5. Contadores
+ creacion de metodos que contiene los contadores que van a poner el avanze del viaje y la disminuscion de combustible para la nave
+```
+ private static void combustible(double recFuel)
+```
+```
+ private static void time(double timeTravel)
+```
+### 6. Seleción de planetas 
+selecion de los planetas dado en la clase explorer 
+```
+List<Planet> planets = getPlanets();
+        System.out.println("\n Por favor ingresa el nombre del planeta al que desear ");
+        String selectedPlanet = input.nextLine().trim();
+
+        Planet planetToVisit = null;
+
+        for (Planet planet : planets) {
+            if (planet.getPlaneName().equalsIgnoreCase(selectedPlanet))
+                planetToVisit = planet;
+        }
+        if (planetToVisit != null) {
+            System.out.println(" \nHas seleccionadao viajar a " + planetToVisit);
+```
+### 7. Comparación del planeta 
+después de seleccionar el planeta entra al switch a comprar y ejecutar los datos para cada planeta 
+```
+switch (selectedPlanet) {
+                case "mercurio":
+                    Thread combustibleThread = new Thread(() -> combustible(16));
+                    Thread timeThread = new Thread(() -> time(26));
+                    // Iniciar hilos
+                    combustibleThread.start();
+                    timeThread.start();
+                    try {
+                        // Esperar a que ambos hilos terminen
+                        combustibleThread.join();
+                        timeThread.join();
+                    } catch (InterruptedException e) {
+                        System.out.println("Error en la simulación del viaje");
+                    }
+                    System.out.print(" combustible disponible en la nave ");
+                    combustible(16);
+                    System.out.print(" tiempo restante para llegar ");
+                    time(26);
+                    break;
+```
+#### creacion y inicializacion de los hilos 
+los hilos se utilizaran para poder mostrar el simultaneo la disminucion del combustible y el progreso del viaje 
+```
+  // creacion de los hilos para mercurio
+ Thread combustibleThread = new Thread(() -> combustible(16));
+                    Thread timeThread = new Thread(() -> time(26));
+                    // Iniciar hilos
+                    combustibleThread.start();
+                    timeThread.start();
+```
+#### creacion de hilos para diferentes planetas 
+para cada planeta se va a crear un hilo por lo tanto cada variable del hilo tiene que tener un nombre diferente 
+```
+case "venus":
+                    // se agrego la variable (combustibleThreadVenus)  para venus asi con todos los planetas 
+                    Thread combustibleThreadVenus = new Thread(() -> combustible(13));
+                    Thread timeThreadVenus = new Thread(() -> time(15));
+
+                    // Iniciar hilos
+                    combustibleThreadVenus.start();
+                    timeThreadVenus.start();
+
+                    try {
+                        // Esperar a que ambos hilos terminen
+                        combustibleThreadVenus.join();
+                        timeThreadVenus.join();
+                    } catch (InterruptedException e) {
+                        System.out.println("Error en la simulación del viaje");
+                    }
+
+                    System.out.print(" combustible disponible en la nave ");
+                    combustible(13);
+                    System.out.print(" tiempo restante para llegar ");
+                    time(15);
+                    break;
+```
+### 8. Interacción en el viaje
 #### o Eventos:
 En el metodo "eventManager" se utilizara numeros aleatorios para generar un evento donde el astronauta (usuario) debera completar una tarea para poder salvar su trayecto efectivamente. Esto dependera de las caracteristicas de la nave y de la variable "eventProbability"
 
