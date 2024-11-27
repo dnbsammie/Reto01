@@ -80,63 +80,63 @@ class SpaceShip {
         this.toughness = toughness;
     }
 
-  // Setters
-  public void setShipName(String shipName) {
-    this.shipName = shipName;
-}
+    // Setters
+    public void setShipName(String shipName) {
+        this.shipName = shipName;
+    }
 
-public void setMaxSpeed(int maxSpeed) {
-    this.maxSpeed = maxSpeed;
-}
+    public void setMaxSpeed(int maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
 
-public void setCrewCapacity(int crewCapacity) {
-    this.crewCapacity = crewCapacity;
-}
+    public void setCrewCapacity(int crewCapacity) {
+        this.crewCapacity = crewCapacity;
+    }
 
-public void setGravityControl(int gravityControl) {
-    this.gravityControl = gravityControl;
-}
+    public void setGravityControl(int gravityControl) {
+        this.gravityControl = gravityControl;
+    }
 
-public void setFuelCapacity(int fuelCapacity) {
-    this.fuelCapacity = fuelCapacity;
-}
+    public void setFuelCapacity(int fuelCapacity) {
+        this.fuelCapacity = fuelCapacity;
+    }
 
-public void setDamage(int damage) {
-    this.damage = damage;
-}
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
 
-public void setToughness(int toughness) {
-    this.toughness = toughness;
-}
+    public void setToughness(int toughness) {
+        this.toughness = toughness;
+    }
 
-// Getters
-public String getShipName() {
-    return shipName;
-}
+    // Getters
+    public String getShipName() {
+        return shipName;
+    }
 
-public int getMaxSpeed() {
-    return maxSpeed;
-}
+    public int getMaxSpeed() {
+        return maxSpeed;
+    }
 
-public int getCrewCapacity() {
-    return crewCapacity;
-}
+    public int getCrewCapacity() {
+        return crewCapacity;
+    }
 
-public int getGravityControl() {
-    return gravityControl;
-}
+    public int getGravityControl() {
+        return gravityControl;
+    }
 
-public int getFuelCapacity() {
-    return fuelCapacity;
-}
+    public int getFuelCapacity() {
+        return fuelCapacity;
+    }
 
-public int getDamage() {
-    return damage;
-}
+    public int getDamage() {
+        return damage;
+    }
 
-public int getToughness() {
-    return toughness;
-}
+    public int getToughness() {
+        return toughness;
+    }
 
     public void showShipStats() {
         System.out.println("Nombre de la Nave: " + shipName);
@@ -150,7 +150,7 @@ public int getToughness() {
 }
 
 public class Explorer {
-    private static Planet selectedPlanet;  // Variable global para el planeta seleccionado
+    private static Planet selectedPlanet; // Variable global para el planeta seleccionado
     private static SpaceShip selectedShip;
 
     public static List<Planet> getPlanets() {
@@ -172,15 +172,53 @@ public class Explorer {
     // Carga de sistemas de la nave
     public static void loadResources() {
         System.out.print("Iniciando secuencias de carga");
-        try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
-        System.out.print("."); try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
-        System.out.print("."); try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
-        System.out.println("."); try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.print(".");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.print(".");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(".");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.out.print("Sistemas de nave activados");
-        try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
-        System.out.print("."); try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
-        System.out.print("."); try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
-        System.out.println("."); try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.print(".");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.print(".");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(".");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.out.println("\n¡Listo para el lanzamiento!\n");
     }
 
@@ -247,6 +285,7 @@ public class Explorer {
     public static void showMenu() {
         System.out.println("\n--- PANEL CENTRAL ---\n");
         System.out.println("1. Planeta de destino.");
+
         System.out.println("2. Selección de nave.");
         System.out.println("3. Inicio del Viaje.");
         System.out.println("4. Opciones.");
@@ -257,12 +296,13 @@ public class Explorer {
     // Seleccion del planeta a donde quiere viajar //
     public static void planetSelector(Scanner input) {
         List<Planet> planets = getPlanets();
-        System.out.println("Selecciona un planeta:");
+        System.out.println(" Escribe el numero al cual le correponde cada planeta para seleccionarlos :");
         for (int i = 0; i < planets.size(); i++) {
             System.out.println((i + 1) + ". " + planets.get(i).getPlanetName());
         }
 
         int planetChoice = input.nextInt();
+        input.nextLine(); // limpieza de buffer despues de leer un entero 
         Planet selectedPlanet = planets.get(planetChoice - 1);
         System.out.println("Has seleccionado el planeta: " + selectedPlanet.getPlanetName());
         System.out.println(selectedPlanet);
@@ -282,6 +322,7 @@ public class Explorer {
         }
 
         int shipChoice = input.nextInt();
+        input.nextLine(); 
         SpaceShip selectedShip = ships.get(shipChoice - 1);
         System.out.println("Has seleccionado la nave: " + selectedShip.getShipName());
         selectedShip.showShipStats();
@@ -292,68 +333,136 @@ public class Explorer {
             System.out.println("Debes seleccionar un planeta y una nave antes de comenzar el viaje.");
             return;
         }
-    
+
         System.out.println("\nComenzando el viaje hacia " + selectedPlanet.getPlanetName());
         System.out.println("Distancia al planeta: " + selectedPlanet.getEarthDistance() + " millones de km");
         System.out.println("Tiempo estimado de viaje: " + selectedPlanet.getTimeTravel() + " días");
-    
+
         // Si la nave tiene suficiente combustible para el viaje
         if (selectedShip.getFuelCapacity() <= 0) {
             System.out.println("¡La nave no tiene suficiente combustible! El viaje no puede realizarse.");
             return;
         }
-    
+
         // Si la nave tiene suficiente resistencia (para el daño) antes de partir
         if (selectedShip.getToughness() > 50) {
             System.out.println("¡La nave tiene un daño significativo y no puede viajar con seguridad!");
             return;
         }
-    
+
         // Simulación del viaje
         System.out.println("\nEl viaje ha comenzado...\n");
         try {
-            Thread.sleep(2000); 
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    
+
         eventManager(input);
-    
+
         if (selectedShip.getFuelCapacity() <= 0) {
             System.out.println("¡La nave se quedó sin combustible durante el viaje!");
             shutDownShip(true);
             return;
         }
-    
+
         if (selectedShip.getDamage() > 50) {
             System.out.println("¡La nave sufrió demasiados daños durante el viaje!");
             shutDownShip(true);
             return;
         }
-    
+
         System.out.println("\n¡Has llegado al planeta " + selectedPlanet.getPlanetName() + "!");
         System.out.println("Tiempo total de viaje: " + selectedPlanet.getTimeTravel() + " días");
         printTime("En la tierra la hora es:");
     }
-    
+
     public static void eventManager(Scanner input) {
         Random random = new Random();
-    
+
         // Evento de pérdida de combustible
-        if (random.nextInt(100) < 20) {  // 20% de probabilidad
+        if (random.nextInt(100) < 20) { // 20% de probabilidad
             System.out.println("¡Atención! La nave ha perdido parte de su combustible debido a una fuga.");
-            selectedShip.setFuelCapacity(selectedShip.getFuelCapacity() - 10);  // Decrementamos el combustible
-        }
+            selectedShip.setFuelCapacity(selectedShip.getFuelCapacity() - 10); // Decrementamos el combustible
     
+            // Oportunidad de reparación
+            System.out.println("¿Quieres intentar reparar la fuga? Responde correctamente para sellarla y recuperar combustible.");
+            System.out.println("Pregunta: ¿Cuál es el elemento más abundante en el universo?");
+            System.out.println("a) Hidrógeno\nb) Oxígeno\nc) Carbono\nd) Helio");
+    
+            String answer = input.nextLine().toLowerCase();
+            if (answer.equals("a")) {
+                System.out.println("¡Correcto! Has sellado la fuga y recuperado 8 unidades de combustible.");
+                selectedShip.setFuelCapacity(selectedShip.getFuelCapacity() + 8); // Recupera parte del combustible
+            } else {
+                System.out.println("Respuesta incorrecta. La fuga no pudo ser sellada.");
+            }
+        }
+        // falla electronica
+        if (random.nextInt(100) < 99) { // 25% de probabilidad
+            System.out.println("¡Interferencia electromagnética detectada! Los sistemas de navegación están inestables.");
+            selectedShip.setGravityControl(selectedShip.getGravityControl() - 10); // Reducción en maniobrabilidad
+    
+            // Oportunidad de estabilización
+            System.out.println("¿Quieres intentar estabilizar los sistemas? Responde correctamente para restaurar el control.");
+            System.out.println("Pregunta: ¿En qué año aterrizó el primer humano en la Luna?");
+            System.out.println("a) 1965\nb) 1969\nc) 1972\nd) 1975");
+    
+            String answer = input.nextLine().toLowerCase();
+            if (answer.equals("b")) {
+                System.out.println("¡Correcto! Has estabilizado los sistemas y restaurado el control de gravedad.");
+                selectedShip.setGravityControl(selectedShip.getGravityControl() + 10); // Recupera maniobrabilidad
+            } else {
+                System.out.println("Respuesta incorrecta. Los sistemas siguen inestables.");
+            }
+        }
+
+        // sobrecaliento del motor
+        if (random.nextInt(100) < 30) { // 30% de probabilidad
+            System.out.println("¡Alerta! El motor está sobrecalentado debido a las altas temperaturas espaciales.");
+            selectedShip.setDamage(selectedShip.getDamage() + 5); // Aumento del daño
+    
+            // Oportunidad de enfriamiento
+            System.out.println("¿Quieres intentar enfriar el motor? Responde correctamente para reducir el daño.");
+            System.out.println("Pregunta: ¿Qué planeta del Sistema Solar es conocido como el 'Planeta Rojo'?");
+            System.out.println("a) Marte\nb) Venus\nc) Júpiter\nd) Saturno");
+    
+            String answer = input.nextLine().toLowerCase();
+            if (answer.equals("a")) {
+                System.out.println("¡Correcto! Has enfriado el motor y reducido el daño en 3 unidades.");
+                selectedShip.setDamage(selectedShip.getDamage() - 3); // Reduce parte del daño
+            } else {
+                System.out.println("Respuesta incorrecta. El motor sigue sobrecalentado.");
+            }
+        }
         // Evento de daño adicional
-        if (random.nextInt(100) < 15) {  // 15% de probabilidad
+        if (random.nextInt(100) < 15) { // 15% de probabilidad
             System.out.println("¡Un meteorito ha impactado la nave! La nave ha sufrido daño adicional.");
-            selectedShip.setDamage(selectedShip.getDamage() + 10);  // Aumentamos el daño
+            selectedShip.setDamage(selectedShip.getDamage() + 10); // Aumentamos el daño
         }
-    
+        // Advertencia
+        if (random.nextInt(100) < 45) {
+            System.out.println(
+                    " ¡perdida de combustible fragementos de roca en el espacio detectados ten cuidado de no peder proviciones ");
+
+        }
+
+        // Evento de colisión con micro-asteroides
+        if (random.nextInt(100) < 10) { // 10% de probabilidad
+            System.out.println("¡Colisión con micro-asteroides! El casco de la nave ha sido dañado.");
+            selectedShip.setDamage(selectedShip.getDamage() + 8); // Incremento de daño
+            selectedShip.setFuelCapacity(selectedShip.getFuelCapacity() - 3); // Pequeña pérdida de combustible
+        }
+
+        // Evento de tormenta de radiación
+        if (random.nextInt(100) < 12) { // 12% de probabilidad
+            System.out.println("¡Tormenta de radiación espacial! Los escudos han sido debilitados.");
+            selectedShip.setToughness(selectedShip.getToughness() - 5); // Reducción en resistencia
+        }
+
         System.out.println("\nEventos de viaje gestionados.");
+
     }
-    
 
     public static void settingsManager(Scanner input) {
 
