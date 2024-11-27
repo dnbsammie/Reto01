@@ -1,8 +1,111 @@
 # DOCUMENTACIÓN
 
-## Requerimientos:
-### 1. clase planet 
-en la clase planet vamos a declarar los variables  como el nombre del planeta, la distancia en comparacion a la tierra, el tiempo del viaje, el combustible recomendado para el viaje, y si el planeta contiene anillos o no y le asiganamos esas variables al metodo construtor 
+## 1. Descripción del Proyecto
+
+**Nombre del proyecto**: Intra Planetary Explorer.
+**Género**: Simulación, Espacio, Cohetes, Sci-fi.
+**Objetivo del desafio**:  
+Desarrollar un simulador de viaje interplanetario, donde se gestionara un viaje espacial a diferentes planetas del sistema solar. El usuario obtendra la experiencia de elegir el destino, gestionar recursos de la nave y resolver conflictos a medida de que los eventos se vuelven más complejos.
+
+## 2. Objetivos
+
+- **Destino interplanetario*: Permitir al usuario elegir un planeta destino entre una lista de planetas del sistema solar.
+- **Calcular distancia y tiempo de viaje**: Calcular la distancia entre la tierra y el planeta destino, considerar el tiempo de viaje tomando la velocidad dada (PENDIENTE)
+- **Gestionar Recursos de la nave**: Calcular la cantidad de combustible necesario para el viaje y permitir al usuario administrar los recursos (Combustible y oxigeno). Esto variara según los recursos disponibles y necesarios para cierto destino. (PENDIENTE)
+- **Simular eventos aleatorios durante el viaje**: Introducción de eventos aleatorios que puedan afectar el viaje tanto del entorno como del sistema. El usuario debera intervenir para resolverlos. (En proceso)
+- **Monitoreo el estado del viaje**: El usuario podra ver el progreso del viaje, cantidad de recursos disponivles y tiempo restante para llegar al destino.
+
+## 3. Requerimientos Funcionales
+
+El proyecto consiste en la interacción del usuario (Astronauta) con la consola (Sistema de la nave) donde debera encontrar:
+
+1. **Selección de destino**:  
+   - Presenta la lista de planetas para escoger el destino con los caracteres numericos del teclado.
+   - Solicitar la confirmación del destino por parte del usuario.
+   - Devolver información basica del planeta.
+
+2. **Cálculo de Distancia y tiempo de viaje**: (PENDIENTE)
+   - Calcular la distancia del planeta y el tiempo utilizando la velocidad:
+    ```
+    t = d / v = ?
+    ```
+   - Mostrar la información al usuario.
+
+3. **Gestión de Recursos**: (PENDIENTE) 
+   - Calcular la cantidad de combustible y oxígeno necesarios para el viaje según la distancia. (En proceso...)
+   - Permitir al usuario revisar y ajustar los recursos antes de partir (Metodo settingsManager)
+
+4. **Simulación de Eventos Aleatorios**: (PENDIENTE) 
+   - Durante el viaje, simular eventos aleatorios que afecten el progreso como desvios, fallos en el sistema o factores externos. (En proceso...)
+   - Solicitar al usuario tomar decisiones para resolver los problemas (Metodo eventManager)
+    ```
+    Evento 1. (nombre del evento)
+    Descripción:
+    Tarea a realizar:
+    ```
+    ```
+    Evento 2. (nombre del evento)
+    Descripción:
+    Tarea a realizar:
+    ```
+    ```
+    Evento 3. (nombre del evento)
+    Descripción:
+    Tarea a realizar:
+    ```
+    ```
+    Evento 4. (nombre del evento)
+    Descripción:
+    Tarea a realizar:
+    ```
+    ```
+    Evento 5. (nombre del evento)
+    Descripción:
+    Tarea a realizar:
+    ```
+
+5. **Monitoreo del Estado de Viaje**: (PENDIENTE) 
+   - Mostrar en pantalla el progreso de viaje, tiempo restante y recursos disponibles . (Clase travelState)
+   - Notificar al astronauta a cargo si el viaje fue exitoso o si la nave se quedó sin recursos.
+
+6. **Interacción con el Usuario**: (PENDIENTE) 
+   - El sistema debe proporcionar un menú interactivo para que el usuario elija las opciones disponibles
+    ```
+    -PANEL DE VIAJE-
+    - Progreso de viaje: ?%
+    - Recursos:
+        - Combustible: ?%
+        - Oxígeno: ?%
+    - Opciones:
+        - Velocidad: (Minima || Normal || Máxima) (Desgaste de commbustible)
+        - Opción 2:
+        - Opción 3:
+    ```
+   - Notificar al astronauta a cargo si las entradas son validas bajo el número correspondiente.
+
+## 4. Flujo del Juego
+
+1. El jugador presiona una tecla para comenzar desde la pantalla de inicio.
+2. El juego inicia con las paletas y la pelota en sus posiciones iniciales.
+3. Los jugadores controlan las paletas con las teclas (arriba/abajo para un jugador, o W/S y las teclas de flecha para el otro).
+4. La pelota se mueve y rebota en las paredes y las paletas. Si la pelota pasa una paleta, el jugador contrario marca un punto.
+5. El juego termina cuando uno de los jugadores alcanza una cantidad predefinida de puntos, por ejemplo, 5 puntos.
+
+## 5. Requisitos Funcionales
+
+- **Movimiento de las paletas**: Las paletas deben moverse arriba y abajo, pero no deben salirse de los bordes de la pantalla.
+- **Pelota**: La pelota debe moverse en una dirección diagonal y debe rebotar cuando colisiona con una paleta o las paredes superior e inferior de la pantalla.
+- **Marcador**: El marcador debe actualizarse cada vez que un jugador marque un punto.
+- **Colisiones**: La pelota debe detectar colisiones con las paletas y las paredes correctamente.
+- **Sonido**: Al rebotar la pelota y al marcar un punto, debe sonar un efecto de sonido.
+
+## 6. Componentes del Juego
+
+### 6.1. Codigo
+
+- **Clases:**
+
+
 ```
 class Planet {
     private String planetName; // Nombre del planeta
@@ -20,8 +123,7 @@ class Planet {
         this.ringSystem = ringSystem;
     }
 ```
-### 2. datos antes de empezar el viaje
-en la clase SpaceShip se declaran las variables que contienen los datos del viaje, y de la nave y con su metodo para dichos parametros.
+**Clase SpaceShip:**
 ```
 class SpaceShip {
     private String shipName; // Nombre de la nave
@@ -36,10 +138,7 @@ class SpaceShip {
 public SpaceShip(String shipName, int maxSpeed, int crewCapacity, int gravityControl, int fuelCapacity, int damage,
             int toughness)
 ```
-
-
-### 3. Clase explorer 
-la Clase explorer la cual contiene los datos del planeta nombre distancia el tiempo de viaje el combustible restante para ir al planeta y si tiene anillos o no 
+**Clase Explorer:**
 ```
 public class Explorer {
     // private static final Object monitor = new Object();
@@ -52,180 +151,20 @@ public class Explorer {
 // asi con todos los planetas 
 }
 ```
-### 3. Selección de planeta de destino
-#### o Elegir planeta de viaje
-El metodo "planetSelector" se encargara de seleccionar el destino del viaje, recargar combustible y desplegara la información del planeta seleccionado.
-#### o Mostrar detalles del planeta:
-El metodo "planetData" debe proporcionar la información del planeta seleccionado, datos, satelites naturales y planetas enanos al rededor.
+- **Metodos:**
 
-### 2. Gestión de la nave espacial
-#### o Seleccionar una nave para el viaje:
-"shipSelector" desplegara un menu con diferentes naves, cada una con diferentes caracteristicas como:
+- **Interacciónes:**
 
-```
-Velocidad Máxima: (maxSpeed)
-162,000 km/h.
-```
-```
-Capacidad de tripulantes: (crewCapacity)
-2-4-6-8-etc
-```
-```
-Control de gravedad: (gravityControl)
-?%
-```
-```
-Capacidad de combustible: (fuelCapacity)
-?%
-```
-```
-Daño actual: (damage)
-?%
-```
-```
-Dureza / Resistencia de la nave: (toughness)
-?%
-```
-#### o Cálculo:
-"travelCalculator" sera el metodo que se encargara de determinar si el viaje es posible o no, presentara la duración estimada en día, advertencias, recomendaciones y  y peligros 
-
-
-### 3. Simulación del viaje
-#### o Simulación básica del progreso del viaje:
-La consola devolvera mensajes constantemente con el metodo "travelProgress" donde el usuario tomara decisiones y podra leer estadisticas como:
-
-- % recorrido
-- Tiempo estimado / duración del viaje (Desde la hora en que empezo el trayecto)
-- % de combustible
-- % de daños
-- Estado actual
-
-### 4. Interacción con el Usuario
-#### o Ingreso:
-El usuario vera una pantalla de carga donde obtendra la posibilidad de escoger su nombre, traje y sera asignado con un ID aleatorio.
-#### o Menu de opciones:
-Una vez ingresado, el usuario encontrara un menú interactivo que le permitira escoger alguno de estos metodos:
-- Planeta de destino
-- Selección de nave (o creación de una propia)
-- Inicio de viaje
-- Opciones
-- Salir de la nave (salir del programa)
-
-Uso de metodos try-catch para evitar una opción invalida por parte del usuario
-
- ### 5. Contadores
- creacion de metodos que contiene los contadores que van a poner el avanze del viaje y la disminuscion de combustible para la nave
-```
- private static void combustible(double recFuel)
-```
-```
- private static void time(double timeTravel)
-```
-### 6. Seleción de planetas 
-selecion de los planetas dado en la clase explorer 
-```
-List<Planet> planets = getPlanets();
-        System.out.println("\n Por favor ingresa el nombre del planeta al que desear ");
-        String selectedPlanet = input.nextLine().trim();
-
-        Planet planetToVisit = null;
-
-        for (Planet planet : planets) {
-            if (planet.getPlaneName().equalsIgnoreCase(selectedPlanet))
-                planetToVisit = planet;
-        }
-        if (planetToVisit != null) {
-            System.out.println(" \nHas seleccionadao viajar a " + planetToVisit);
-```
-### 7. Comparación del planeta 
-después de seleccionar el planeta entra al switch a comprar y ejecutar los datos para cada planeta 
-```
-switch (selectedPlanet) {
-                case "mercurio":
-                    Thread combustibleThread = new Thread(() -> combustible(16));
-                    Thread timeThread = new Thread(() -> time(26));
-                    // Iniciar hilos
-                    combustibleThread.start();
-                    timeThread.start();
-                    try {
-                        // Esperar a que ambos hilos terminen
-                        combustibleThread.join();
-                        timeThread.join();
-                    } catch (InterruptedException e) {
-                        System.out.println("Error en la simulación del viaje");
-                    }
-                    System.out.print(" combustible disponible en la nave ");
-                    combustible(16);
-                    System.out.print(" tiempo restante para llegar ");
-                    time(26);
-                    break;
-```
-#### creacion y inicializacion de los hilos 
-los hilos se utilizaran para poder mostrar el simultaneo la disminucion del combustible y el progreso del viaje 
-```
-  // creacion de los hilos para mercurio
- Thread combustibleThread = new Thread(() -> combustible(16));
-                    Thread timeThread = new Thread(() -> time(26));
-                    // Iniciar hilos
-                    combustibleThread.start();
-                    timeThread.start();
-```
-#### creacion de hilos para diferentes planetas 
-para cada planeta se va a crear un hilo por lo tanto cada variable del hilo tiene que tener un nombre diferente 
-```
-case "venus":
-                    // se agrego la variable (combustibleThreadVenus)  para venus asi con todos los planetas 
-                    Thread combustibleThreadVenus = new Thread(() -> combustible(13));
-                    Thread timeThreadVenus = new Thread(() -> time(15));
-
-                    // Iniciar hilos
-                    combustibleThreadVenus.start();
-                    timeThreadVenus.start();
-
-                    try {
-                        // Esperar a que ambos hilos terminen
-                        combustibleThreadVenus.join();
-                        timeThreadVenus.join();
-                    } catch (InterruptedException e) {
-                        System.out.println("Error en la simulación del viaje");
-                    }
-
-                    System.out.print(" combustible disponible en la nave ");
-                    combustible(13);
-                    System.out.print(" tiempo restante para llegar ");
-                    time(15);
-                    break;
-```
-### 8. Interacción en el viaje
-#### o Eventos:
-En el metodo "eventManager" se utilizara numeros aleatorios para generar un evento donde el astronauta (usuario) debera completar una tarea para poder salvar su trayecto efectivamente. Esto dependera de las caracteristicas de la nave y de la variable "eventProbability"
-
-```
-Evento 1. (nombre del evento)
-Descripción:
-Tarea a realizar:
-```
-```
-Evento 1. (nombre del evento)
-Descripción:
-Tarea a realizar:
-```
-```
-Evento 1. (nombre del evento)
-Descripción:
-Tarea a realizar:
-```
-```
-Evento 1. (nombre del evento)
-Descripción:
-Tarea a realizar:
-```
-```
-Evento 1. (nombre del evento)
-Descripción:
-Tarea a realizar:
-```
-```
-Evento 1. (nombre del evento)
-Descripción:
-Tarea a realizar:
+## 7. Resumen Final
+### 7.1. Conclusión:
+Pendiente
+### 7.2. Notas de Versión (Changelog):
+Pendiente
+### 7.3. Creditos y Agradecimientos:
+- Desarrolladores a cargo:
+ - Luis Miguel Triana Rueda.
+ - Samuel Esteban Rivera Mosquera.
+- Agradecimientos a:
+ - [INSTRUCTOR]: Cesar Augusto Díaz Arriaga
+### 7.4. Referencias::
+- Sistema Solar, Wikipedia: https://es.wikipedia.org/wiki/Sistema_solar#Planetas
