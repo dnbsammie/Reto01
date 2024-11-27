@@ -1,8 +1,58 @@
 # DOCUMENTACIÓN
 
 ## Requerimientos:
+### 1. clase planet 
+en la clase planet vamos a declarar los variables  como el nombre del planeta, la distancia en comparacion a la tierra, el tiempo del viaje, el combustible recomendado para el viaje, y si el planeta contiene anillos o no y le asiganamos esas variables al metodo construtor 
+```
+class Planet {
+    private String planetName; // Nombre del planeta
+    private double earthDistance; // Distancia desde la tierra
+    private double timeTravel; // Tiempo de viaje
+    private double recFuel; // Combustible recomendado por planeta
+    private boolean ringSystem; // El planeta tiene Anillos / Discos?
+    public String planet;
+// METODO CONSTRUCTOR
+  public Planet(String planetName, double earthDistance, double timeTravel, double recFuel, boolean ringSystem) {
+        this.planetName = planetName;
+        this.earthDistance = earthDistance;
+        this.timeTravel = timeTravel;
+        this.recFuel = recFuel;
+        this.ringSystem = ringSystem;
+    }
+```
+### 2. datos antes de empezar el viaje
+en la clase SpaceShip se declaran las variables que contienen los datos del viaje, y de la nave y con su metodo para dichos parametros.
+```
+class SpaceShip {
+    private String shipName; // Nombre de la nave
+    private int maxSpeed; // Velocidad Máxima de la nave
+    private int crewCapacity; // Capacidad de tripulantes
+    private int gravityControl; // Control de gravedad (Maniobrilidad)
+    private int fuelCapacity; // Capacidad máxima de combustible
+    private int damage; // % de daño actual de la nave
+    private int toughness; // Resistencia de la nave
+// METODO DATOS NAVE
 
-### 1. Selección de planeta de destino
+public SpaceShip(String shipName, int maxSpeed, int crewCapacity, int gravityControl, int fuelCapacity, int damage,
+            int toughness)
+```
+
+
+### 3. Clase explorer 
+la Clase explorer la cual contiene los datos del planeta nombre distancia el tiempo de viaje el combustible restante para ir al planeta y si tiene anillos o no 
+```
+public class Explorer {
+    // private static final Object monitor = new Object();
+
+    public static List<Planet> getPlanets() {
+        List<Planet> planets = new ArrayList<>();
+        // Nombre del planeta | Distancia en relacioón a la tierra | Tiempo en días | %
+        // de combustible necesario por viaje | Tiene (o no) anillos
+ planets.add(new Planet("Mercurio", 77, 26, 16, false));
+// asi con todos los planetas 
+}
+```
+### 3. Selección de planeta de destino
 #### o Elegir planeta de viaje
 El metodo "planetSelector" se encargara de seleccionar el destino del viaje, recargar combustible y desplegara la información del planeta seleccionado.
 #### o Mostrar detalles del planeta:
