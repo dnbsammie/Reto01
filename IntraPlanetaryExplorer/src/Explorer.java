@@ -30,7 +30,7 @@ class Planet {
         this.ringSystem = ringSystem;
     }
 
-    public String getPlaneName() {
+    public String getPlanetName() {
         return planetName;
     }
 
@@ -80,33 +80,63 @@ class SpaceShip {
         this.toughness = toughness;
     }
 
-    public String getShipName() {
-        return shipName;
-    }
+  // Setters
+  public void setShipName(String shipName) {
+    this.shipName = shipName;
+}
 
-    public int getMaxSpeed() {
-        return maxSpeed;
-    }
+public void setMaxSpeed(int maxSpeed) {
+    this.maxSpeed = maxSpeed;
+}
 
-    public int getCrewCapacity() {
-        return crewCapacity;
-    }
+public void setCrewCapacity(int crewCapacity) {
+    this.crewCapacity = crewCapacity;
+}
 
-    public int getGravityControl() {
-        return gravityControl;
-    }
+public void setGravityControl(int gravityControl) {
+    this.gravityControl = gravityControl;
+}
 
-    public int getFuelCapacity() {
-        return fuelCapacity;
-    }
+public void setFuelCapacity(int fuelCapacity) {
+    this.fuelCapacity = fuelCapacity;
+}
 
-    public int getDamage() {
-        return damage;
-    }
+public void setDamage(int damage) {
+    this.damage = damage;
+}
 
-    public int getToughness() {
-        return toughness;
-    }
+public void setToughness(int toughness) {
+    this.toughness = toughness;
+}
+
+// Getters
+public String getShipName() {
+    return shipName;
+}
+
+public int getMaxSpeed() {
+    return maxSpeed;
+}
+
+public int getCrewCapacity() {
+    return crewCapacity;
+}
+
+public int getGravityControl() {
+    return gravityControl;
+}
+
+public int getFuelCapacity() {
+    return fuelCapacity;
+}
+
+public int getDamage() {
+    return damage;
+}
+
+public int getToughness() {
+    return toughness;
+}
 
     public void showShipStats() {
         System.out.println("Nombre de la Nave: " + shipName);
@@ -120,7 +150,8 @@ class SpaceShip {
 }
 
 public class Explorer {
-    // private static final Object monitor = new Object();
+    private static Planet selectedPlanet;  // Variable global para el planeta seleccionado
+    private static SpaceShip selectedShip;
 
     public static List<Planet> getPlanets() {
         List<Planet> planets = new ArrayList<>();
@@ -141,77 +172,15 @@ public class Explorer {
     // Carga de sistemas de la nave
     public static void loadResources() {
         System.out.print("Iniciando secuencias de carga");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.print(".");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.print(".");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println(".");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+        System.out.print("."); try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+        System.out.print("."); try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+        System.out.println("."); try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
         System.out.print("Sistemas de nave activados");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.print(".");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.print(".");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println(".");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.print("Revisando componentes");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.print(".");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.print(".");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println(".");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+        System.out.print("."); try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+        System.out.print("."); try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+        System.out.println("."); try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
         System.out.println("\n¡Listo para el lanzamiento!\n");
     }
 
@@ -219,7 +188,6 @@ public class Explorer {
     public static void printTime(String message) {
         LocalDateTime timeAndHour = LocalDateTime.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy");
-
         System.out.println(message);
         System.out.println("Fecha y hora actual: " + timeAndHour.format(format));
         System.out.println();
@@ -231,7 +199,7 @@ public class Explorer {
 
         loadResources();
 
-        System.out.println("Usuario. Por favor, ingresa tu nombre: ");
+        System.out.println("Usuario. Por favor, ingresa tu Alias: ");
         String userName = input.nextLine();
 
         Random random = new Random();
@@ -262,8 +230,9 @@ public class Explorer {
                     break;
                 case 4:
                     settingsManager(input); // Menu de opciones
+                    break;
                 case 5:
-                    shipOff();
+                    shutDownShip(false);
                     cont = false;
                     break;
                 default:
@@ -272,9 +241,6 @@ public class Explorer {
                             userName + userId + "Por favor " + userName + userId + ",elige una opción correcta.");
             }
         }
-
-        showMenu();
-
         input.close();
     }
 
@@ -286,49 +252,135 @@ public class Explorer {
         System.out.println("4. Opciones.");
         System.out.println("5. Salir de la nave.");
         System.out.print("\nElige una opción: \n");
-        System.out.println(".-.)");
     }
 
     // Seleccion del planeta a donde quiere viajar //
     public static void planetSelector(Scanner input) {
-        System.out.println("\n¿A que planeta deseas ir \n");
         List<Planet> planets = getPlanets();
-        for (Planet planet : planets) {
-            System.out.println(planet);
+        System.out.println("Selecciona un planeta:");
+        for (int i = 0; i < planets.size(); i++) {
+            System.out.println((i + 1) + ". " + planets.get(i).getPlanetName());
         }
 
+        int planetChoice = input.nextInt();
+        Planet selectedPlanet = planets.get(planetChoice - 1);
+        System.out.println("Has seleccionado el planeta: " + selectedPlanet.getPlanetName());
+        System.out.println(selectedPlanet);
     }
 
     // Seleccionador de Naves
     public static void shipSelector(Scanner input) {
-        SpaceShip ship1 = new SpaceShip("Odyssey", 5000, 100, 200, 100, 0, 50);
-        SpaceShip ship2 = new SpaceShip("LightStar", 4500, 200, 300, 70, 0, 10);
-        SpaceShip ship3 = new SpaceShip("Nucleus", 6000, 150, 250, 80, 0, 100);
+        List<SpaceShip> ships = new ArrayList<>();
+        ships.add(new SpaceShip("Odyssey", 5000, 100, 200, 100, 0, 50));
+        ships.add(new SpaceShip("LightStar", 4500, 200, 300, 70, 0, 10));
+        ships.add(new SpaceShip("Nucleus", 6000, 150, 250, 80, 0, 100));
+        ships.add(new SpaceShip("Apollo", 800, 8, 90, 95, 20, 110));
 
-        SpaceShip[] ships = { ship1, ship2, ship3 };
-
-        System.out.println("Selecciona una nave espacial:");
-        for (int i = 0; i < ships.length; i++) {
-            System.out.println((i + 1) + ". " + ships[i].getShipName());
+        System.out.println("Selecciona una nave:");
+        for (int i = 0; i < ships.size(); i++) {
+            System.out.println((i + 1) + ". " + ships.get(i).getShipName());
         }
 
-        int selection = input.nextInt();
-
-        if (selection < 1 || selection > ships.length) {
-            System.out.println("Selección invalida");
-        } else {
-            ships[selection - 1].showShipStats();
-        }
+        int shipChoice = input.nextInt();
+        SpaceShip selectedShip = ships.get(shipChoice - 1);
+        System.out.println("Has seleccionado la nave: " + selectedShip.getShipName());
+        selectedShip.showShipStats();
     }
 
     public static void spaceTrip(Scanner input) {
+        if (selectedPlanet == null || selectedShip == null) {
+            System.out.println("Debes seleccionar un planeta y una nave antes de comenzar el viaje.");
+            return;
+        }
+    
+        System.out.println("\nComenzando el viaje hacia " + selectedPlanet.getPlanetName());
+        System.out.println("Distancia al planeta: " + selectedPlanet.getEarthDistance() + " millones de km");
+        System.out.println("Tiempo estimado de viaje: " + selectedPlanet.getTimeTravel() + " días");
+    
+        // Si la nave tiene suficiente combustible para el viaje
+        if (selectedShip.getFuelCapacity() <= 0) {
+            System.out.println("¡La nave no tiene suficiente combustible! El viaje no puede realizarse.");
+            return;
+        }
+    
+        // Si la nave tiene suficiente resistencia (para el daño) antes de partir
+        if (selectedShip.getToughness() > 50) {
+            System.out.println("¡La nave tiene un daño significativo y no puede viajar con seguridad!");
+            return;
+        }
+    
+        // Simulación del viaje
+        System.out.println("\nEl viaje ha comenzado...\n");
+        try {
+            Thread.sleep(2000); 
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    
+        eventManager(input);
+    
+        if (selectedShip.getFuelCapacity() <= 0) {
+            System.out.println("¡La nave se quedó sin combustible durante el viaje!");
+            shutDownShip(true);
+            return;
+        }
+    
+        if (selectedShip.getDamage() > 50) {
+            System.out.println("¡La nave sufrió demasiados daños durante el viaje!");
+            shutDownShip(true);
+            return;
+        }
+    
+        System.out.println("\n¡Has llegado al planeta " + selectedPlanet.getPlanetName() + "!");
+        System.out.println("Tiempo total de viaje: " + selectedPlanet.getTimeTravel() + " días");
+        printTime("En la tierra la hora es:");
     }
+    
+    public static void eventManager(Scanner input) {
+        Random random = new Random();
+    
+        // Evento de pérdida de combustible
+        if (random.nextInt(100) < 20) {  // 20% de probabilidad
+            System.out.println("¡Atención! La nave ha perdido parte de su combustible debido a una fuga.");
+            selectedShip.setFuelCapacity(selectedShip.getFuelCapacity() - 10);  // Decrementamos el combustible
+        }
+    
+        // Evento de daño adicional
+        if (random.nextInt(100) < 15) {  // 15% de probabilidad
+            System.out.println("¡Un meteorito ha impactado la nave! La nave ha sufrido daño adicional.");
+            selectedShip.setDamage(selectedShip.getDamage() + 10);  // Aumentamos el daño
+        }
+    
+        System.out.println("\nEventos de viaje gestionados.");
+    }
+    
 
     public static void settingsManager(Scanner input) {
 
     }
 
-    public static void shipOff() {
+    public static void shutDownShip(boolean isFailure) {
+        // Salir de la nave por fallas
+        if (isFailure) {
+            if (selectedShip.getDamage() >= 50 || selectedShip.getFuelCapacity() <= 10) {
+                System.out.println("La nave ha fallado: ");
+                if (selectedShip.getDamage() >= 50) {
+                    System.out.println("Daño excesivo: " + selectedShip.getDamage() + "%.");
+                }
+                if (selectedShip.getFuelCapacity() <= 10) {
+                    System.out.println("Combustible insuficiente.");
+                }
+                System.out.println("El viaje ha fracasado debido a fallas técnicas. Apagando los sistemas.");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("Sistema de la nave apagado con éxito debido a fallas. El viaje ha terminado.");
+                System.exit(0);
+            }
+        }
+        // Salida normal
         System.out.print("Revisando componentes");
         try {
             Thread.sleep(1000);
@@ -464,282 +516,283 @@ public class Explorer {
 // }
 // }
 // }
-//   // Seleccion del planeta a donde quiere viajar //
-//   public static void planetSelector() {
-//     System.out.println("\n¿A que planeta deseas ir \n");
-//     // OPCIONES
-//     // SELECION DEL PLANETA POR EL USUARIO
-//     List<Planet> planets = getPlanets();
+// // Seleccion del planeta a donde quiere viajar //
+// public static void planetSelector() {
+// System.out.println("\n¿A que planeta deseas ir \n");
+// // OPCIONES
+// // SELECION DEL PLANETA POR EL USUARIO
+// List<Planet> planets = getPlanets();
 
-//     System.out.println("\n Por favor ingresa el nombre del planeta al que desear ");
-//     String selectedPlanet = input.nextLine().trim();
+// System.out.println("\n Por favor ingresa el nombre del planeta al que desear
+// ");
+// String selectedPlanet = input.nextLine().trim();
 
-//     Planet planetToVisit = null;
+// Planet planetToVisit = null;
 
-//     for (Planet planet : planets) {
+// for (Planet planet : planets) {
 
-//         if (planet.getPlaneName().equalsIgnoreCase(selectedPlanet))
-//             planetToVisit = planet;
+// if (planet.getPlaneName().equalsIgnoreCase(selectedPlanet))
+// planetToVisit = planet;
 
-//     }
+// }
 
-//     if (planetToVisit != null) {
+// if (planetToVisit != null) {
 
-//         System.out.println(" \nHas seleccionadao viajar a " + planetToVisit);
+// System.out.println(" \nHas seleccionadao viajar a " + planetToVisit);
 
-//         // planetas a ejecutar con sus contadores
+// // planetas a ejecutar con sus contadores
 
-//         switch (selectedPlanet) {
+// switch (selectedPlanet) {
 
-//             case "mercurio":
+// case "mercurio":
 
-//                 Thread combustibleThread = new Thread(() -> combustible(16));
-//                 Thread timeThread = new Thread(() -> time(26));
+// Thread combustibleThread = new Thread(() -> combustible(16));
+// Thread timeThread = new Thread(() -> time(26));
 
-//                 // Iniciar hilos
-//                 combustibleThread.start();
-//                 timeThread.start();
+// // Iniciar hilos
+// combustibleThread.start();
+// timeThread.start();
 
-//                 try {
-//                     // Esperar a que ambos hilos terminen
-//                     combustibleThread.join();
-//                     timeThread.join();
-//                 } catch (InterruptedException e) {
-//                     System.out.println("Error en la simulación del viaje");
-//                 }
+// try {
+// // Esperar a que ambos hilos terminen
+// combustibleThread.join();
+// timeThread.join();
+// } catch (InterruptedException e) {
+// System.out.println("Error en la simulación del viaje");
+// }
 
-//                 System.out.print(" combustible disponible en la nave ");
+// System.out.print(" combustible disponible en la nave ");
 
-//                 combustible(16);
+// combustible(16);
 
-//                 System.out.print(" tiempo restante para llegar ");
+// System.out.print(" tiempo restante para llegar ");
 
-//                 time(26);
+// time(26);
 
-//                 break;
+// break;
 
-//             case "venus":
-//                 // venus
-//                 Thread combustibleThreadVenus = new Thread(() -> combustible(13));
-//                 Thread timeThreadVenus = new Thread(() -> time(15));
+// case "venus":
+// // venus
+// Thread combustibleThreadVenus = new Thread(() -> combustible(13));
+// Thread timeThreadVenus = new Thread(() -> time(15));
 
-//                 // Iniciar hilos
-//                 combustibleThreadVenus.start();
-//                 timeThreadVenus.start();
+// // Iniciar hilos
+// combustibleThreadVenus.start();
+// timeThreadVenus.start();
 
-//                 try {
-//                     // Esperar a que ambos hilos terminen
-//                     combustibleThreadVenus.join();
-//                     timeThreadVenus.join();
-//                 } catch (InterruptedException e) {
-//                     System.out.println("Error en la simulación del viaje");
-//                 }
+// try {
+// // Esperar a que ambos hilos terminen
+// combustibleThreadVenus.join();
+// timeThreadVenus.join();
+// } catch (InterruptedException e) {
+// System.out.println("Error en la simulación del viaje");
+// }
 
-//                 System.out.print(" combustible disponible en la nave ");
+// System.out.print(" combustible disponible en la nave ");
 
-//                 combustible(13);
+// combustible(13);
 
-//                 System.out.print(" tiempo restante para llegar ");
+// System.out.print(" tiempo restante para llegar ");
 
-//                 time(15);
+// time(15);
 
-//                 break;
-//             case "marte":
+// break;
+// case "marte":
 
-//                 Thread combustibleThreadMarte = new Thread(() -> combustible(20));
-//                 Thread timeThreadMarte = new Thread(() -> time(89.6));
+// Thread combustibleThreadMarte = new Thread(() -> combustible(20));
+// Thread timeThreadMarte = new Thread(() -> time(89.6));
 
-//                 // Iniciar hilos
-//                 combustibleThreadMarte.start();
-//                 timeThreadMarte.start();
+// // Iniciar hilos
+// combustibleThreadMarte.start();
+// timeThreadMarte.start();
 
-//                 try {
-//                     // Esperar a que ambos hilos terminen
-//                     combustibleThreadMarte.join();
-//                     timeThreadMarte.join();
-//                 } catch (InterruptedException e) {
-//                     System.out.println("Error en la simulación del viaje");
-//                 }
+// try {
+// // Esperar a que ambos hilos terminen
+// combustibleThreadMarte.join();
+// timeThreadMarte.join();
+// } catch (InterruptedException e) {
+// System.out.println("Error en la simulación del viaje");
+// }
 
-//                 System.out.print(" combustible disponible en la nave ");
+// System.out.print(" combustible disponible en la nave ");
 
-//                 combustible(20);
+// combustible(20);
 
-//                 System.out.print(" tiempo restante para llegar ");
+// System.out.print(" tiempo restante para llegar ");
 
-//                 time(89.6);
+// time(89.6);
 
-//                 break;
+// break;
 
-//             case "jupiter":
-//                 // creacion de hilos
-//                 Thread combustibleThreadJupiter = new Thread(() -> combustible(45));
-//                 Thread timeThreadJupiter = new Thread(() -> time(160.7));
+// case "jupiter":
+// // creacion de hilos
+// Thread combustibleThreadJupiter = new Thread(() -> combustible(45));
+// Thread timeThreadJupiter = new Thread(() -> time(160.7));
 
-//                 // Iniciar hilos
-//                 combustibleThreadJupiter.start();
-//                 timeThreadJupiter.start();
+// // Iniciar hilos
+// combustibleThreadJupiter.start();
+// timeThreadJupiter.start();
 
-//                 try {
-//                     // Esperar a que ambos hilos terminen
-//                     combustibleThreadJupiter.join();
-//                     timeThreadJupiter.join();
-//                 } catch (InterruptedException e) {
-//                     System.out.println("Error en la simulación del viaje");
-//                 }
+// try {
+// // Esperar a que ambos hilos terminen
+// combustibleThreadJupiter.join();
+// timeThreadJupiter.join();
+// } catch (InterruptedException e) {
+// System.out.println("Error en la simulación del viaje");
+// }
 
-//                 System.out.print(" combustible disponible en la nave ");
+// System.out.print(" combustible disponible en la nave ");
 
-//                 combustible(45);
+// combustible(45);
 
-//                 System.out.print(" tiempo restante para llegar ");
+// System.out.print(" tiempo restante para llegar ");
 
-//                 time(160.7);
-//                 break;
-//             case "Saturno":
-//                 Thread combustibleThreadSaturno = new Thread(() -> combustible(56));
-//                 Thread timeThreadSaturno = new Thread(() -> time(320));
+// time(160.7);
+// break;
+// case "Saturno":
+// Thread combustibleThreadSaturno = new Thread(() -> combustible(56));
+// Thread timeThreadSaturno = new Thread(() -> time(320));
 
-//                 // Iniciar hilos
-//                 combustibleThreadSaturno.start();
-//                 timeThreadSaturno.start();
+// // Iniciar hilos
+// combustibleThreadSaturno.start();
+// timeThreadSaturno.start();
 
-//                 try {
-//                     // Esperar a que ambos hilos terminen
-//                     combustibleThreadSaturno.join();
-//                     timeThreadSaturno.join();
-//                 } catch (InterruptedException e) {
-//                     System.out.println("Error en la simulación del viaje");
-//                 }
+// try {
+// // Esperar a que ambos hilos terminen
+// combustibleThreadSaturno.join();
+// timeThreadSaturno.join();
+// } catch (InterruptedException e) {
+// System.out.println("Error en la simulación del viaje");
+// }
 
-//                 System.out.print(" combustible disponible en la nave ");
+// System.out.print(" combustible disponible en la nave ");
 
-//                 combustible(56);
+// combustible(56);
 
-//                 System.out.print(" tiempo restante para llegar ");
+// System.out.print(" tiempo restante para llegar ");
 
-//                 time(320);
+// time(320);
 
-//                 break;
+// break;
 
-//             case "urano":
-//                 Thread combustibleThreadUrano = new Thread(() -> combustible(78));
-//                 Thread timeThreadUrano = new Thread(() -> time(450));
+// case "urano":
+// Thread combustibleThreadUrano = new Thread(() -> combustible(78));
+// Thread timeThreadUrano = new Thread(() -> time(450));
 
-//                 // Iniciar hilos
-//                 combustibleThreadUrano.start();
-//                 timeThreadUrano.start();
+// // Iniciar hilos
+// combustibleThreadUrano.start();
+// timeThreadUrano.start();
 
-//                 try {
-//                     // Esperar a que ambos hilos terminen
-//                     combustibleThreadUrano.join();
-//                     timeThreadUrano.join();
-//                 } catch (InterruptedException e) {
-//                     System.out.println("Error en la simulación del viaje");
-//                 }
+// try {
+// // Esperar a que ambos hilos terminen
+// combustibleThreadUrano.join();
+// timeThreadUrano.join();
+// } catch (InterruptedException e) {
+// System.out.println("Error en la simulación del viaje");
+// }
 
-//                 System.out.print(" combustible disponible en la nave ");
+// System.out.print(" combustible disponible en la nave ");
 
-//                 combustible(78);
+// combustible(78);
 
-//                 System.out.print(" tiempo restante para llegar ");
+// System.out.print(" tiempo restante para llegar ");
 
-//                 time(450);
-//                 break;
+// time(450);
+// break;
 
-//             case "neptuno":
-//                 Thread combustibleThreadNeptuno = new Thread(() -> combustible(85));
-//                 Thread timeThreadNeptuno = new Thread(() -> time(600));
+// case "neptuno":
+// Thread combustibleThreadNeptuno = new Thread(() -> combustible(85));
+// Thread timeThreadNeptuno = new Thread(() -> time(600));
 
-//                 // Iniciar hilos
-//                 combustibleThreadNeptuno.start();
-//                 timeThreadNeptuno.start();
+// // Iniciar hilos
+// combustibleThreadNeptuno.start();
+// timeThreadNeptuno.start();
 
-//                 try {
-//                     // Esperar a que ambos hilos terminen
-//                     combustibleThreadNeptuno.join();
-//                     timeThreadNeptuno.join();
-//                 } catch (InterruptedException e) {
-//                     System.out.println("Error en la simulación del viaje");
-//                 }
+// try {
+// // Esperar a que ambos hilos terminen
+// combustibleThreadNeptuno.join();
+// timeThreadNeptuno.join();
+// } catch (InterruptedException e) {
+// System.out.println("Error en la simulación del viaje");
+// }
 
-//                 System.out.print(" combustible disponible en la nave ");
+// System.out.print(" combustible disponible en la nave ");
 
-//                 combustible(85);
+// combustible(85);
 
-//                 System.out.print(" tiempo restante para llegar ");
+// System.out.print(" tiempo restante para llegar ");
 
-//                 time(600);
+// time(600);
 
-//                 break;
+// break;
 
-//             case "pluton":
+// case "pluton":
 
-//                 Thread combustibleThreadPluton = new Thread(() -> combustible(98));
-//                 Thread timeThreadPluton = new Thread(() -> time(978));
+// Thread combustibleThreadPluton = new Thread(() -> combustible(98));
+// Thread timeThreadPluton = new Thread(() -> time(978));
 
-//                 // Iniciar hilos
-//                 combustibleThreadPluton.start();
-//                 timeThreadPluton.start();
+// // Iniciar hilos
+// combustibleThreadPluton.start();
+// timeThreadPluton.start();
 
-//                 try {
-//                     // Esperar a que ambos hilos terminen
-//                     combustibleThreadPluton.join();
-//                     timeThreadPluton.join();
-//                 } catch (InterruptedException e) {
-//                     System.out.println("Error en la simulación del viaje");
-//                 }
+// try {
+// // Esperar a que ambos hilos terminen
+// combustibleThreadPluton.join();
+// timeThreadPluton.join();
+// } catch (InterruptedException e) {
+// System.out.println("Error en la simulación del viaje");
+// }
 
-//                 System.out.print(" combustible disponible en la nave ");
+// System.out.print(" combustible disponible en la nave ");
 
-//                 combustible(98);
+// combustible(98);
 
-//                 System.out.print(" tiempo restante para llegar ");
+// System.out.print(" tiempo restante para llegar ");
 
-//                 time(978);
-//                 break;
-//             default:
-//                 System.out.println(" planeta no valido");
-//                 break;
+// time(978);
+// break;
+// default:
+// System.out.println(" planeta no valido");
+// break;
 
-//         }
-//     }
+// }
+// }
 // }
 
 // // Combustible disponible de la nave
 // private static void combustible(double recFuel) {
-//     for (double i = recFuel; i > 0; i--) {
-//         synchronized (monitor) {
-//             System.out.println("Combustible disponible " + i + "%");
-//             monitor.notify(); // Notificar al otro hilo
-//             try {
-//                 monitor.wait(); // Esperar al otro hilo
-//                 Thread.sleep(1000); // Retraso de 1 segundo
-//             } catch (InterruptedException e) {
-//                 System.out.println("Error en el combustible");
-//             }
-//         }
-//     }
+// for (double i = recFuel; i > 0; i--) {
+// synchronized (monitor) {
+// System.out.println("Combustible disponible " + i + "%");
+// monitor.notify(); // Notificar al otro hilo
+// try {
+// monitor.wait(); // Esperar al otro hilo
+// Thread.sleep(1000); // Retraso de 1 segundo
+// } catch (InterruptedException e) {
+// System.out.println("Error en el combustible");
+// }
+// }
+// }
 // }
 
 // // // Tiempo de la nave en llegar al planeta
 // private static void time(double timeTravel) {
 
-//     for (double i = timeTravel; i > 0; i--) {
-//         synchronized (monitor) {
-//             System.out.println("Tiempo restante " + i + " horas");
-//             monitor.notify(); // Notificar al otro hilo
-//             try {
-//                 monitor.wait(); // Esperar al otro hilo
-//                 Thread.sleep(1000); // Retraso de 1 segundo
-//             } catch (InterruptedException e) {
-//                 System.out.println("Error en la simulación del vuelo");
-//             }
-//         }
-//     }
+// for (double i = timeTravel; i > 0; i--) {
+// synchronized (monitor) {
+// System.out.println("Tiempo restante " + i + " horas");
+// monitor.notify(); // Notificar al otro hilo
+// try {
+// monitor.wait(); // Esperar al otro hilo
+// Thread.sleep(1000); // Retraso de 1 segundo
+// } catch (InterruptedException e) {
+// System.out.println("Error en la simulación del vuelo");
+// }
+// }
+// }
 
-//     synchronized (monitor) {
-//         System.out.println("¡Llegaste a tu destino!");
-//         monitor.notify(); // Notificar al otro hilo por si está esperando
-//     }
+// synchronized (monitor) {
+// System.out.println("¡Llegaste a tu destino!");
+// monitor.notify(); // Notificar al otro hilo por si está esperando
+// }
 // }
