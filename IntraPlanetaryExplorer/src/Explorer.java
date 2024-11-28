@@ -282,6 +282,14 @@ public class Explorer {
         input.close();
     }
 
+    // Calculo del tiempo dependiendo la velocidad de la nave // 
+ public static double calculateTravelTime(double distance, int speed) {
+    if (speed <= 0) {
+        return Double.MAX_VALUE; // Si la nave tiene velocidad cero, el viaje es imposible
+    }
+    return distance / speed; // Tiempo en millones de km por unidad de velocidad
+}
+
     public static void showMenu() {
         System.out.println("\n--- PANEL CENTRAL ---\n");
         System.out.println("1. Planeta de destino.");
@@ -302,7 +310,9 @@ public class Explorer {
         }
 
         int planetChoice = input.nextInt();
-        input.nextLine(); // limpieza de buffer despues de leer un entero 
+
+        input.nextLine(); // limpieza de buffer despues de leer un entero de la opcion
+        
         Planet selectedPlanet = planets.get(planetChoice - 1);
         System.out.println("Has seleccionado el planeta: " + selectedPlanet.getPlanetName());
         System.out.println(selectedPlanet);
@@ -322,34 +332,40 @@ public class Explorer {
         }
 
         int shipChoice = input.nextInt();
-        input.nextLine(); 
+        input.nextLine(); // limpieza del buffer despue de leer un entero de la opcion
+
         SpaceShip selectedShip = ships.get(shipChoice - 1);
         System.out.println("Has seleccionado la nave: " + selectedShip.getShipName());
         selectedShip.showShipStats();
     }
 
     public static void spaceTrip(Scanner input) {
+
         if (selectedPlanet == null || selectedShip == null) {
             System.out.println("Debes seleccionar un planeta y una nave antes de comenzar el viaje.");
             return;
         }
-
-        System.out.println("\nComenzando el viaje hacia " + selectedPlanet.getPlanetName());
-        System.out.println("Distancia al planeta: " + selectedPlanet.getEarthDistance() + " millones de km");
-        System.out.println("Tiempo estimado de viaje: " + selectedPlanet.getTimeTravel() + " días");
-
-        // Si la nave tiene suficiente combustible para el viaje
+    
+        // Calcular la distancia entre la Tierra y el planeta seleccionado
+        double distance = selectedPlanet.getEarthDistance();
+        System.out.println("La distancia entre la Tierra y " + selectedPlanet.getPlanetName() + " es: " + distance + " millones de km");
+    
+        // Calcular el tiempo de viaje
+        double travelTime = calculateTravelTime(distance, selectedShip.getMaxSpeed());
+        System.out.println("Tiempo estimado de viaje a " + selectedPlanet.getPlanetName() + ": " + travelTime + " días");
+    
+        // Verificar si la nave tiene suficiente combustible
         if (selectedShip.getFuelCapacity() <= 0) {
             System.out.println("¡La nave no tiene suficiente combustible! El viaje no puede realizarse.");
             return;
         }
-
-        // Si la nave tiene suficiente resistencia (para el daño) antes de partir
+    
+        // Verificar la resistencia de la nave (si tiene daño suficiente)
         if (selectedShip.getToughness() > 50) {
             System.out.println("¡La nave tiene un daño significativo y no puede viajar con seguridad!");
             return;
         }
-
+    
         // Simulación del viaje
         System.out.println("\nEl viaje ha comenzado...\n");
         try {
@@ -357,21 +373,25 @@ public class Explorer {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+    
+        // Manejo de eventos durante el viaje
         eventManager(input);
-
+    
+        // Verificar que la nave tenga combustible al final del viaje
         if (selectedShip.getFuelCapacity() <= 0) {
             System.out.println("¡La nave se quedó sin combustible durante el viaje!");
             shutDownShip(true);
             return;
         }
-
+    
+        // Verificar que la nave no haya sufrido demasiado daño
         if (selectedShip.getDamage() > 50) {
             System.out.println("¡La nave sufrió demasiados daños durante el viaje!");
             shutDownShip(true);
             return;
         }
-
+    
+        // El viaje ha terminado
         System.out.println("\n¡Has llegado al planeta " + selectedPlanet.getPlanetName() + "!");
         System.out.println("Tiempo total de viaje: " + selectedPlanet.getTimeTravel() + " días");
         printTime("En la tierra la hora es:");
@@ -463,7 +483,7 @@ public class Explorer {
         System.out.println("\nEventos de viaje gestionados.");
 
     }
-
+ // OPCIONES DE VIAJE
     public static void settingsManager(Scanner input) {
 
     }
