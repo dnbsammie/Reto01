@@ -35,40 +35,121 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
    - Calcular la cantidad de combustible y oxígeno necesarios para el viaje según la distancia. (En proceso...)
    - Permitir al usuario revisar y ajustar los recursos antes de partir (Metodo settingsManager)
 
-4. **Simulación de Eventos Aleatorios**: (PENDIENTE) 
+4. **Simulación de Eventos Aleatorios**: 
    - Durante el viaje, simular eventos aleatorios que afecten el progreso como desvios, fallos en el sistema o factores externos. (En proceso...)
    - Solicitar al usuario tomar decisiones para resolver los problemas (Metodo eventManager)
+  
+   4.1 **Evento 1 (perdidad de combustible )**:
+     durante el evento 1 se genera una probabilidad del 20% de que el evento se genere si se genera la nave pierde -10 unidades de combustible
+   el cual tiene la probabilidad de recuperar 8 unidades de combustible si la respuesta a la pregunta echa en el proceso de recuperación es correcta 
     ```
-    Evento 1. (nombre del evento)
-    Descripción:
-    Tarea a realizar:
-    ```
-    ```
-    Evento 2. (nombre del evento)
-    Descripción:
-    Tarea a realizar:
-    ```
-    ```
-    Evento 3. (nombre del evento)
-    Descripción:
-    Tarea a realizar:
-    ```
-    ```
-    Evento 4. (nombre del evento)
-    Descripción:
-    Tarea a realizar:
-    ```
-    ```
-    Evento 5. (nombre del evento)
-    Descripción:
-    Tarea a realizar:
-    ```
+    // evento de daño //
+    if (random.nextInt(100) < 20) { // 20% de probabilidad
+            System.out.println("¡Atención! La nave ha perdido parte de su combustible debido a una fuga.");
+            selectedShip.setFuelCapacity(selectedShip.getFuelCapacity() - 10); // Decrementamos el combustible
 
-5. **Monitoreo del Estado de Viaje**: (PENDIENTE) 
+     
+    //  tarea para solucionar el problema // 
+   System.out.println("¿Quieres intentar reparar la fuga? Responde correctamente para sellarla y recuperar combustible.");
+            System.out.println("Pregunta: ¿Cuál es el elemento más abundante en el universo?");
+            System.out.println("a) Hidrógeno\nb) Oxígeno\nc) Carbono\nd) Helio");
+    
+            String answer = input.nextLine().toLowerCase();
+    
+            if (answer.equals("a")) {
+                System.out.println("¡Correcto! Has sellado la fuga y recuperado 8 unidades de combustible.");
+                selectedShip.setFuelCapacity(selectedShip.getFuelCapacity() + 8); // Recupera parte del combustible
+            } else {
+                System.out.println("Respuesta incorrecta. La fuga no pudo ser sellada.");
+            }
+    
+    ```
+    4.2 **Evento 2 (Falla electronica)**:
+     durante el evento 2 la nave presentara una falla electronica con un 25% de ocurrir la cual reducidara la maniobralidad en -10
+   el cual tiene la probabilidad de reveritr la totalidad del daño echo por el evento respondiendo una pregunta si es correcto revierte
+   de lo contrario no.
+    ```
+    if (random.nextInt(100) < 25) { // 25% de probabilidad
+            System.out.println("¡Interferencia electromagnética detectada! Los sistemas de navegación están inestables.");
+            selectedShip.setGravityControl(selectedShip.getGravityControl() - 10); // Reducción en maniobrabilidad
+    
+            // Oportunidad de estabilización
+            System.out.println("¿Quieres intentar estabilizar los sistemas? Responde correctamente para restaurar el control.");
+            System.out.println("Pregunta: ¿En qué año aterrizó el primer humano en la Luna?");
+            System.out.println("a) 1965\nb) 1969\nc) 1972\nd) 1975");
+    
+            String answer = input.nextLine().toLowerCase();
+            if (answer.equals("b")) {
+                System.out.println("¡Correcto! Has estabilizado los sistemas y restaurado el control de gravedad.");
+                selectedShip.setGravityControl(selectedShip.getGravityControl() + 10); // Recupera maniobrabilidad
+            } else {
+                System.out.println("Respuesta incorrecta. Los sistemas siguen inestables.");
+            }
+        }
+    ```
+    4.3 **Evento 3 (Sobrecaliento del motor)**:
+   durante el evento 3 se genera con un 30% de ocurrir un sobrecaliento del motor el cual aumentara el daño de la nave en 5 unidades
+   el cual tiene la probabilidad de revertirse con la respuesta correcta de la pregunta de lo contrario el aumento del daño no se revertira 
+    ```
+   if (random.nextInt(100) < 30) { // 30% de probabilidad
+            System.out.println("¡Alerta! El motor está sobrecalentado debido a las altas temperaturas espaciales.");
+            selectedShip.setDamage(selectedShip.getDamage() + 5); // Aumento del daño
+    
+            // Oportunidad de enfriamiento
+            System.out.println("¿Quieres intentar enfriar el motor? Responde correctamente para reducir el daño.");
+            System.out.println("Pregunta: ¿Qué planeta del Sistema Solar es conocido como el 'Planeta Rojo'?");
+            System.out.println("a) Marte\nb) Venus\nc) Júpiter\nd) Saturno");
+    
+            String answer = input.nextLine().toLowerCase();
+            if (answer.equals("a")) {
+                System.out.println("¡Correcto! Has enfriado el motor y reducido el daño en 3 unidades.");
+                selectedShip.setDamage(selectedShip.getDamage() - 3); // Reduce parte del daño
+            } else {
+                System.out.println("Respuesta incorrecta. El motor sigue sobrecalentado.");
+            }
+        }
+    ```
+    4.4 **Evento 4 (Daño adicional)**:
+   en el evento 4 se genera un daño adicional con una probabilidad del 15% de aparecer el cual no tiene una forma de revertir el daño 
+    ```
+     if (random.nextInt(100) < 15) { // 15% de probabilidad
+            System.out.println("¡Un meteorito ha impactado la nave! La nave ha sufrido daño adicional.");
+            selectedShip.setDamage(selectedShip.getDamage() + 10); // Aumentamos el daño
+        }
+    ```
+    4.5 **Evento 5 (Advertencia)**:
+   se genera una advertencia de posibles daños 
+    ```
+    if (random.nextInt(100) < 45) { 
+            System.out.println(
+                    " ¡fragementos de roca en el espacio detectados ten cuidado de no peder proviciones ");
+        }
+
+    ```
+    4.6 **Evento 6 (Colisión de micro-asteroides)**:
+   se genera una colisión de micro-asteroides el cual incrementa el daño y disminuye el combustible 
+    ```
+    if (random.nextInt(100) < 10) { // 10% de probabilidad
+            System.out.println("¡Colisión con micro-asteroides! El casco de la nave ha sido dañado.");
+            selectedShip.setDamage(selectedShip.getDamage() + 8); // Incremento de daño
+            selectedShip.setFuelCapacity(selectedShip.getFuelCapacity() - 3); // Pequeña pérdida de combustible
+        }
+   ```
+   4.7 **Evento 7 (Radiación espacial)**:
+   se genera una radiacion espaccial la cual disminuye la resistencia de la nave en -5 unidades 
+   
+   ```
+   if (random.nextInt(100) < 12) { // 12% de probabilidad
+               System.out.println("¡Tormenta de radiación espacial! Los escudos han sido debilitados.");
+               selectedShip.setToughness(selectedShip.getToughness() - 5); // Reducción en resistencia
+           }
+```
+```
+6. **Monitoreo del Estado de Viaje**: (PENDIENTE) 
    - Mostrar en pantalla el progreso de viaje, tiempo restante y recursos disponibles . (Clase travelState)
    - Notificar al astronauta a cargo si el viaje fue exitoso o si la nave se quedó sin recursos.
 
-6. **Interacción con el Usuario**: (PENDIENTE) 
+7. **Interacción con el Usuario**: (PENDIENTE) 
    - El sistema debe proporcionar un menú interactivo para que el usuario elija las opciones disponibles
     ```
     -PANEL DE VIAJE-
