@@ -419,7 +419,7 @@ public class Explorer {
             }
         }
         // falla electronica
-        if (random.nextInt(100) < 99) { // 25% de probabilidad
+        if (random.nextInt(100) < 25) { // 25% de probabilidad
             System.out.println("¡Interferencia electromagnética detectada! Los sistemas de navegación están inestables.");
             selectedShip.setGravityControl(selectedShip.getGravityControl() - 10); // Reducción en maniobrabilidad
     
@@ -461,9 +461,9 @@ public class Explorer {
             selectedShip.setDamage(selectedShip.getDamage() + 10); // Aumentamos el daño
         }
         // Advertencia
-        if (random.nextInt(100) < 45) {
+        if (random.nextInt(100) < 45) { 
             System.out.println(
-                    " ¡perdida de combustible fragementos de roca en el espacio detectados ten cuidado de no peder proviciones ");
+                    "fragementos de roca en el espacio detectados ten cuidado de no peder proviciones ");
 
         }
 
@@ -544,7 +544,7 @@ public class Explorer {
         System.exit(0);
     }
 }
-
+ 
 // public class reto1 {
 
 // private static int fuel;
