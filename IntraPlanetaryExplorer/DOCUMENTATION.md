@@ -9,7 +9,7 @@ Desarrollar un simulador de viaje interplanetario, donde se gestionara un viaje 
 
 ## 2. Objetivos
 
-- **Destino interplanetario*: Permitir al usuario elegir un planeta destino entre una lista de planetas del sistema solar.
+- **Destino interplanetario**: Permitir al usuario elegir un planeta destino entre una lista de planetas del sistema solar.
 - **Calcular distancia y tiempo de viaje**: Calcular la distancia entre la tierra y el planeta destino, considerar el tiempo de viaje tomando la velocidad dada (PENDIENTE)
 - **Gestionar Recursos de la nave**: Calcular la cantidad de combustible necesario para el viaje y permitir al usuario administrar los recursos (Combustible y oxigeno). Esto variara según los recursos disponibles y necesarios para cierto destino. (PENDIENTE)
 - **Simular eventos aleatorios durante el viaje**: Introducción de eventos aleatorios que puedan afectar el viaje tanto del entorno como del sistema. El usuario debera intervenir para resolverlos. (En proceso)
@@ -83,25 +83,7 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
     ```
    - Notificar al astronauta a cargo si las entradas son validas bajo el número correspondiente.
 
-## 4. Flujo del Juego
-
-1. El jugador presiona una tecla para comenzar desde la pantalla de inicio.
-2. El juego inicia con las paletas y la pelota en sus posiciones iniciales.
-3. Los jugadores controlan las paletas con las teclas (arriba/abajo para un jugador, o W/S y las teclas de flecha para el otro).
-4. La pelota se mueve y rebota en las paredes y las paletas. Si la pelota pasa una paleta, el jugador contrario marca un punto.
-5. El juego termina cuando uno de los jugadores alcanza una cantidad predefinida de puntos, por ejemplo, 5 puntos.
-
-## 5. Requisitos Funcionales
-
-- **Movimiento de las paletas**: Las paletas deben moverse arriba y abajo, pero no deben salirse de los bordes de la pantalla.
-- **Pelota**: La pelota debe moverse en una dirección diagonal y debe rebotar cuando colisiona con una paleta o las paredes superior e inferior de la pantalla.
-- **Marcador**: El marcador debe actualizarse cada vez que un jugador marque un punto.
-- **Colisiones**: La pelota debe detectar colisiones con las paletas y las paredes correctamente.
-- **Sonido**: Al rebotar la pelota y al marcar un punto, debe sonar un efecto de sonido.
-
-## 6. Componentes del Juego
-
-### 6.1. Codigo
+## 5. Componentes del Juego
 
 - **Clases:**
 
@@ -155,16 +137,16 @@ public class Explorer {
 
 - **Interacciónes:**
 
-## 7. Resumen Final
-### 7.1. Conclusión:
+## 6. Resumen Final
+### 6.1. Conclusión:
 Pendiente
-### 7.2. Notas de Versión (Changelog):
+### 6.2. Notas de Versión (Changelog):
 Pendiente
-### 7.3. Creditos y Agradecimientos:
+### 6.3. Creditos y Agradecimientos:
 - Desarrolladores a cargo:
  - Luis Miguel Triana Rueda.
  - Samuel Esteban Rivera Mosquera.
 - Agradecimientos a:
  - [INSTRUCTOR]: Cesar Augusto Díaz Arriaga
-### 7.4. Referencias::
+### 6.4. Referencias::
 - Sistema Solar, Wikipedia: https://es.wikipedia.org/wiki/Sistema_solar#Planetas
