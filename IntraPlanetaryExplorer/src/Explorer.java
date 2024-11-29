@@ -178,7 +178,7 @@ public class Explorer {
 
         if (choice >= 0 && choice < planets.size()) {
             selectedPlanet = planets.get(choice);
-            System.out.printf("Has seleccionado el planeta: %s\n%s", selectedPlanet.getName(), selectedPlanet);
+            System.out.printf("\nHas seleccionado el planeta: %s\n%s", selectedPlanet.getName(), selectedPlanet);
         } else {
             System.out.println("Selección no válida.");
         }
@@ -202,7 +202,7 @@ public class Explorer {
 
         if (choice >= 0 && choice < ships.size()) {
             selectedShip = ships.get(choice);
-            System.out.printf("Has seleccionado la nave: %s\n", selectedShip.getName());
+            System.out.printf("\nHas seleccionado la nave: %s\n", selectedShip.getName());
             selectedShip.showStats();
         } else {
             System.out.println("Selección no válida.");
