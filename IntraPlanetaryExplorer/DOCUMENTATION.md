@@ -143,8 +143,13 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
                System.out.println("¡Tormenta de radiación espacial! Los escudos han sido debilitados.");
                selectedShip.setToughness(selectedShip.getToughness() - 5); // Reducción en resistencia
            }
-```
-```
+    ```
+     4.7 **Evento 8 (Suministro de energia)**:
+    La nave se está alejando demasiado del sol y no puede tomar energia de este (-5)
+
+      ```
+
+    ```
 6. **Monitoreo del Estado de Viaje**: (PENDIENTE) 
    - Mostrar en pantalla el progreso de viaje, tiempo restante y recursos disponibles . (Clase travelState)
    - Notificar al astronauta a cargo si el viaje fue exitoso o si la nave se quedó sin recursos.
@@ -231,3 +236,4 @@ Pendiente
  - [INSTRUCTOR]: Cesar Augusto Díaz Arriaga
 ### 6.4. Referencias::
 - Sistema Solar, Wikipedia: https://es.wikipedia.org/wiki/Sistema_solar#Planetas
+- Combustible Espacial, Outerspace: https://outerspace.es/tecnologia-espacial/combustible-solido-para-cohetes-espaciales-una-innovacion-revolucionaria/
