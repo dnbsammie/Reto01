@@ -616,9 +616,6 @@ public class Explorer {
     }
     
     public static void shutDownShip(boolean isEmergency) {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-        
         if (isEmergency) {
             System.out.println("\n¡ALERTA! ¡EMERGENCIA EN LA NAVE!");
             System.out.println("Los sistemas de la nave se están apagando debido a condiciones inestables.");

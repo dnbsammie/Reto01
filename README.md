@@ -6,7 +6,7 @@
 <p text-align="justify">Este programa simula un viaje interplanetario en el que el usuario selecciona un planeta y la cantidad de combustible para el viaje. El programa evalúa si es posible llegar al destino con el combustible proporcionado y realiza una cuenta regresiva de tiempo y consumo de combustible en paralelo utilizando hilos y sincronización.</p>
 <a href="#">Puedes encontrar la presentación acá mismo...</a>
 
-<h3 align="center">Languages and Tools 🛠</h3>
+<h3 align="left">Languages and Tools 🛠</h3>
 
 <p align="center">
   <a href="https://skillicons.dev">
