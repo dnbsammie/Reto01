@@ -2,17 +2,20 @@
 
 ## 1. Descripción del Proyecto
 
-**Nombre del proyecto**: Intra Planetary Explorer.
-**Género**: Simulación, Espacio, Cohetes, Sci-fi.
-**Objetivo del desafio**:  
+-**Nombre del proyecto**: Intra Planetary Explorer.
+
+-**Género**: Simulación, Espacio, Cohetes, Sci-fi.
+
+-**Objetivo del desafio**: 
+
 Desarrollar un simulador de viaje interplanetario, donde se gestionara un viaje espacial a diferentes planetas del sistema solar. El usuario obtendra la experiencia de elegir el destino, gestionar recursos de la nave y resolver conflictos a medida de que los eventos se vuelven más complejos.
 
 ## 2. Objetivos
 
 - **Destino interplanetario**: Permitir al usuario elegir un planeta destino entre una lista de planetas del sistema solar.
-- **Calcular distancia y tiempo de viaje**: Calcular la distancia entre la tierra y el planeta destino, considerar el tiempo de viaje tomando la velocidad dada (PENDIENTE)
-- **Gestionar Recursos de la nave**: Calcular la cantidad de combustible necesario para el viaje y permitir al usuario administrar los recursos (Combustible y oxigeno). Esto variara según los recursos disponibles y necesarios para cierto destino. (PENDIENTE)
-- **Simular eventos aleatorios durante el viaje**: Introducción de eventos aleatorios que puedan afectar el viaje tanto del entorno como del sistema. El usuario debera intervenir para resolverlos. (En proceso)
+- **Calcular distancia y tiempo de viaje**: Calcular la distancia entre la tierra y el planeta destino, considerar el tiempo de viaje tomando la velocidad dada.
+- **Gestionar Recursos de la nave**: Calcular la cantidad de combustible necesario para el viaje y permitir al usuario administrar los recursos (Combustible y oxigeno). Esto variara según los recursos disponibles y necesarios para cierto destino.
+- **Simular eventos aleatorios durante el viaje**: Introducción de eventos aleatorios que puedan afectar el viaje tanto del entorno como del sistema. El usuario debera intervenir para resolverlos.
 - **Monitoreo el estado del viaje**: El usuario podra ver el progreso del viaje, cantidad de recursos disponivles y tiempo restante para llegar al destino.
 
 ## 3. Requerimientos Funcionales
@@ -595,15 +598,14 @@ En particular, se ha agregado la mecánica de penalizar la nave en caso de que e
 Además, se asegura que los eventos no se repitan durante el mismo viaje mediante un sistema de historial de eventos (eventHistory), lo que otorga un control adicional sobre la dinámica del proyecto. Estas modificaciones no solo enriquecen la jugabilidad, sino que también crean una experiencia más dinámica y desafiante para el jugador, al introducir consecuencias significativas por decisiones incorrectas.
 
 Este enfoque no solo mejora la inmersión; sino que también brinda al jugador la oportunidad de aprender y ajustar sus decisiones en tiempo real, reflejando la importancia de la gestión eficiente de los recursos y sistemas de la nave en el contexto de un viaje espacial largo y peligroso.
-### 8.2. Notas de Versión (Changelog):
-- Pendiente
-### 8.3. Creditos y Agradecimientos:
+
+### 8.2. Creditos y Agradecimientos:
 - Desarrolladores a cargo:
  - Luis Miguel Triana Rueda.
  - Samuel Esteban Rivera Mosquera.
 - Agradecimientos a:
  - [INSTRUCTOR]: Cesar Augusto Díaz Arriaga
  - [INSTRUCTOR]: Alfonso Lara
-### 8.4. Referencias::
+### 8.3. Referencias::
 - Sistema Solar, Wikipedia: https://es.wikipedia.org/wiki/Sistema_solar#Planetas
 - Combustible Espacial, Outerspace: https://outerspace.es/tecnologia-espacial/combustible-solido-para-cohetes-espaciales-una-innovacion-revolucionaria/
