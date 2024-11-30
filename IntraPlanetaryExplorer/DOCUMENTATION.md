@@ -42,7 +42,7 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
 ### 4.1 **Evento 1 (perdidad de combustible )**:
 Durante el evento 1 se genera una probabilidad del 20% de que el evento se genere si se genera la nave pierde -10 unidades de combustible. El cual, tiene la probabilidad de recuperar 8 unidades de combustible si la respuesta a la pregunta hecha en el proceso de recuperación es correcta. 
 
-    ```
+```java
     if (eventRandom.nextInt(100) < 20 && !eventHistory.contains("fuelLeak")) { // 20% de probabilidad
         System.out.println("\n¡Atención! La nave ha perdido parte de su combustible debido a una fuga.\n");
         selectedShip.setFuelCapacity(selectedShip.getFuelCapacity() - 10);
@@ -61,11 +61,12 @@ Durante el evento 1 se genera una probabilidad del 20% de que el evento se gener
     
         eventHistory.add("fuelLeak");
     }
-    ```
+```
+
 ### 4.2 **Evento 2 (Falla electronica)**:
 durante el evento 2 la nave presentara una falla electronica con un 25% de ocurrir la cual reducidara la maniobralidad en -10. El cual tiene la probabilidad de reveritr la totalidad del daño echo por el evento respondiendo una pregunta si es correcto revierte; de lo contrario no.
 
-    ```
+```java
     if (eventRandom.nextInt(100) < 25 && !eventHistory.contains("electronicFailure")) {
         System.out.println("\n¡Interferencia electromagnética detectada! Los sistemas de navegación están inestables.\n");
         selectedShip.setGravityControl(selectedShip.getGravityControl() - 10);
@@ -84,11 +85,11 @@ durante el evento 2 la nave presentara una falla electronica con un 25% de ocurr
     
         eventHistory.add("electronicFailure");
     }
-    ```
+```
 ### 4.3 **Evento 3 (Sobrecaliento del motor)**:
 Durante el evento 3 se genera con un 30% de ocurrir un sobrecaliento del motor el cual aumentara el daño de la nave en 5 unidades; el cual tiene la probabilidad de revertirse con la respuesta correcta de la pregunta. De lo contrario, el aumento del daño no se revertira.
 
-    ```
+```java
     if (eventRandom.nextInt(100) < 30 && !eventHistory.contains("engineOverheat")) {
         System.out.println("\n¡Alerta! El motor está sobrecalentado debido a las altas temperaturas espaciales.\n");
         selectedShip.setDamage(selectedShip.getDamage() + 5);
@@ -108,11 +109,11 @@ Durante el evento 3 se genera con un 30% de ocurrir un sobrecaliento del motor e
     
         eventHistory.add("engineOverheat");
     }
-    ```
+```
 ### 4.4 **Evento 4 (Daño adicional)**:
 En el evento 4 se genera un daño adicional con una probabilidad del 15% de aparecer, el cual no tiene una forma de revertir el daño. 
 
-    ```
+```java
     if (eventRandom.nextInt(100) < 15 && !eventHistory.contains("meteorImpact")) {
         System.out.println("\n¡Un meteorito ha impactado la nave! La nave ha sufrido daño adicional.\n");
         selectedShip.setDamage(selectedShip.getDamage() + 10);
@@ -122,11 +123,11 @@ En el evento 4 se genera un daño adicional con una probabilidad del 15% de apar
     
         eventHistory.add("meteorImpact");
     }
-    ```
+```
 ### 4.5 **Evento 5 (Advertencia)**:
 Se genera una advertencia de posibles daños.
 
-    ```
+```java
     if (eventRandom.nextInt(100) < 10 && !eventHistory.contains("microAsteroidCollision")) {
         System.out.println("\n¡Colisión con micro-asteroides! El casco de la nave ha sido dañado.\n");
         selectedShip.setDamage(selectedShip.getDamage() + 8);
@@ -136,32 +137,32 @@ Se genera una advertencia de posibles daños.
         }
         eventHistory.add("microAsteroidCollision");
     }
-    ```
+```
 ### 4.6 **Evento 6 (Colisión de micro-asteroides)**:
 Se genera una colisión de micro-asteroides el cual incrementa el daño y disminuye el combustible.
 
-    ```
+```java
     if (random.nextInt(100) < 10) { // 10% de probabilidad
             System.out.println("¡Colisión con micro-asteroides! El casco de la nave ha sido dañado.");
             selectedShip.setDamage(selectedShip.getDamage() + 8); // Incremento de daño
             selectedShip.setFuelCapacity(selectedShip.getFuelCapacity() - 3); // Pequeña pérdida de combustible
         }
-    ```
+```
 ### 4.7 **Evento 7 (Radiación espacial)**:
 Se genera una radiacion espaccial la cual disminuye la resistencia de la nave en -5 unidades.
    
-    ```
+```java
     if (eventRandom.nextInt(100) < 12 && !eventHistory.contains("spaceRadiation")) { 
         System.out.println("\n¡Tormenta de radiación espacial! Los escudos han sido debilitados.\n");
         selectedShip.setToughness(selectedShip.getToughness() - 5);
     
         eventHistory.add("spaceRadiation");
     }
-    ```
+```
 ### 4.8 **Evento 8 (Suministro de energia)**:
 La nave se está alejando demasiado del sol y no puede tomar energia de este (-5).
 
-    ```
+```java
     if (selectedPlanet.getEarthDistance() > 4000 && eventRandom.nextInt(100) < 20 && !eventHistory.contains("energyGenerationIssue")) {
         System.out.println("\n¡Alerta! La nave está experimentando dificultades para generar energía debido a la distancia del Sol.\n");
         selectedShip.setEnergyLevel(selectedShip.getEnergyLevel() - 5);
@@ -180,11 +181,11 @@ La nave se está alejando demasiado del sol y no puede tomar energia de este (-5
 
         eventHistory.add("energyGenerationIssue");
     }
-    ```
+```
 ### 4.9 **Evento 9 (Anillos del planeta)**:
 La nave cruza por un planeta con anillos y puede ser penalizada con +5 de daño.
 
-    ```
+```java
     if (selectedPlanet.hasRingSystem() && eventRandom.nextInt(100) < 20 && !eventHistory.contains("planetRingsDanger")) {
         System.out.println("\n¡Peligro! Estás acercándote a un planeta con anillos. Los fragmentos pueden dañar la nave.\n");
         System.out.println("Debes realizar maniobras evasivas para evitar daños. Responde correctamente para maniobrar con éxito.");
@@ -204,11 +205,11 @@ La nave cruza por un planeta con anillos y puede ser penalizada con +5 de daño.
     
         eventHistory.add("planetRingsDanger");
     }
-    ```
+```
 ### 4.10 **Evento 10 (Nave Robusta)**:
 Nave demasiado pesada y lenta para el viaje. Puede recuperar su velocidad normal.
 
-    ```
+```java
     if ((selectedShip.getToughness() > 90 || selectedShip.getCargoCapacity() > 350) && selectedPlanet.getEarthDistance() < 1000 && eventRandom.nextInt(100) < 15 && !eventHistory.contains("overweightShip")) {
         System.out.println("\n¡Advertencia! La nave es demasiado robusta para realizar un viaje eficiente a un planeta cercano como el tuyo.\n");
         System.out.println("La nave está perdiendo mucha velocidad debido a su tamaño y peso. Responde correctamente para optimizar la propulsión.");
@@ -228,11 +229,11 @@ Nave demasiado pesada y lenta para el viaje. Puede recuperar su velocidad normal
 
         eventHistory.add("overweightShip");
     }
-    ```
+```
 ### 4.11 **Evento 11 (Nave Fragil)**:
 Nave demasiado fragil para el viaje. Puede evitar sufrir daño.
 
-    ```
+```java
     if ((selectedShip.getToughness() < 40) && selectedPlanet.getEarthDistance() > 4000 && eventRandom.nextInt(100) < 15 && !eventHistory.contains("fragileShip")) {
         System.out.println("\n¡Alerta! La nave es demasiado frágil para afrontar las duras condiciones de este viaje largo.\n");
         System.out.println("¡Riesgo de daños mayores si no refuerzas los escudos o la estructura!");
@@ -249,7 +250,7 @@ Nave demasiado fragil para el viaje. Puede evitar sufrir daño.
     
         eventHistory.add("fragileShip");
     }
-    ```
+```
 
 ## 5. **Monitoreo del Estado de Viaje**:
    - Mostrar en pantalla el progreso de viaje, tiempo restante y recursos disponibles . (Clase travelState)
@@ -257,7 +258,8 @@ Nave demasiado fragil para el viaje. Puede evitar sufrir daño.
 
 ## 6. **Interacción con el Usuario**: 
 - El sistema debe proporcionar un menú interactivo para que el usuario elija las opciones disponibles
-    ```
+
+```java
     public static void showState(double distanceTraveled, double totalDistance, double elapsedDays, double totalTravelTime, String userId, Scanner input) {
             System.out.println("\n--- PANEL DE CONTROL ---");
             System.out.println("COMANDANTE " + (userId != null ? userId : ""));
@@ -290,7 +292,7 @@ Nave demasiado fragil para el viaje. Puede evitar sufrir daño.
         
             System.out.println("\n--- MANTENTE ALERTA " + (userId != null ? userId : "") + " ---");
     }
-
+```
 - Notificar al astronauta a cargo si las entradas son validas bajo el número correspondiente.
 
 ## 7. Componentes del Proyecto
@@ -298,7 +300,7 @@ Nave demasiado fragil para el viaje. Puede evitar sufrir daño.
 - **Clases:**
 - Planet
 
-    ```
+```java
     class Planet {
         private final String name;
         private final double earthDistance, timeTravel, recFuel;
@@ -326,9 +328,10 @@ Nave demasiado fragil para el viaje. Puede evitar sufrir daño.
                     name, earthDistance, timeTravel, recFuel, ringSystem ? "Sí" : "No");
         }
     }
-    ```
+```
 - SpaceShip
-    ```
+
+```java
     class SpaceShip {
         private String name;
         private int fuelCapacity, speed, cargoCapacity, toughness, shieldStrength, energyLevel, gravityControl, damage;
@@ -379,9 +382,10 @@ Nave demasiado fragil para el viaje. Puede evitar sufrir daño.
             System.out.printf("Nota especial: %s\n", specialNote);
         }
     }
-    ```
-- Explorer
 ```
+- Explorer
+
+```java
     public class Explorer {
         private static Planet selectedPlanet;
         private static SpaceShip selectedShip;
@@ -391,7 +395,7 @@ Nave demasiado fragil para el viaje. Puede evitar sufrir daño.
 - **Metodos:**
 
 - Main
-    ```
+```java
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         loadResources();
@@ -434,10 +438,11 @@ Nave demasiado fragil para el viaje. Puede evitar sufrir daño.
             }
         }
     }
-    ```
+```
 - **Interacciónes:**
 - Menu principal
-    ```
+
+```java
     public static void showMenu() {
         System.out.println("\n--- PANEL CENTRAL ---\n");
         System.out.println("1. Planeta de destino.");
@@ -447,9 +452,10 @@ Nave demasiado fragil para el viaje. Puede evitar sufrir daño.
         System.out.println("5. Salir de la nave.");
         System.out.print("\nElige una opción: ");
     }
-    ```
+```
 - Opciones
-    ```
+
+```java
     public static void settingsManager(Scanner input, List<Planet> availablePlanets) {
         while (true) {
             System.out.println("\n--- CONFIGURACIONES ---");
@@ -472,9 +478,10 @@ Nave demasiado fragil para el viaje. Puede evitar sufrir daño.
             }
         }
     }
-    ```
+```
 - Estado y Barra de Progreso
-    ```
+
+```java
     public static void showState(double distanceTraveled, double totalDistance, double elapsedDays, double totalTravelTime, String userId, Scanner input) {
         System.out.println("\n--- PANEL DE CONTROL ---");
         System.out.println("COMANDANTE " + (userId != null ? userId : ""));
@@ -531,54 +538,55 @@ Nave demasiado fragil para el viaje. Puede evitar sufrir daño.
             e.printStackTrace();
         }
     }
-    ```
+```
 - Salida final
 Utilizamos System.exit(0) por practicidad.
-```
-   public static void shutDownShip(boolean isEmergency) {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+
+```java
+public static void shutDownShip(boolean isEmergency) {
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
         
-        if (isEmergency) {
-            System.out.println("\n¡ALERTA! ¡EMERGENCIA EN LA NAVE!");
-            System.out.println("Los sistemas de la nave se están apagando debido a condiciones inestables.");
-            System.out.print("¡Intentando activar protocolos de seguridad! Preparándose para el apagado de emergencia");
+    if (isEmergency) {
+        System.out.println("\n¡ALERTA! ¡EMERGENCIA EN LA NAVE!");
+        System.out.println("Los sistemas de la nave se están apagando debido a condiciones inestables.");
+        System.out.print("¡Intentando activar protocolos de seguridad! Preparándose para el apagado de emergencia");
             
-            for (int i = 0; i < 4; i++) {
-                try { 
-                    Thread.sleep(1000); 
-                } catch (InterruptedException e) { 
-                    e.printStackTrace(); 
-                }
-                System.out.print(".");
+        for (int i = 0; i < 4; i++) {
+            try { 
+                Thread.sleep(1000); 
+            } catch (InterruptedException e) { 
+                e.printStackTrace(); 
             }
-    
-            System.out.println("\n--- SISTEMAS FALLIDOS ---");
-            System.out.println("¡La nave ha perdido comunicación con la base!");
-            System.out.println("¡Haz fallado en tu misión de exploración!");
-    
-            printTime("\nEl viaje ha terminado abruptamente.\n--- MISIÓN FALLIDA ---\n");
-    
-        } else {
-            System.out.println("\nIniciando apagado seguro de la nave.");
-            System.out.print("Procedimiento iniciado: Desactivando sistemas de a bordo");
-            
-            for (int i = 0; i < 4; i++) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.print(".");
-            }
-    
-            System.out.println("\n--- SISTEMAS APAGADOS ---");
-            System.out.println("La nave se ha apagado correctamente, todos los sistemas han sido desactivados.");
-            printTime("\nProcedimiento completado con éxito.\n");
+            System.out.print(".");
         }
     
-        System.exit(0);
+        System.out.println("\n--- SISTEMAS FALLIDOS ---");
+        System.out.println("¡La nave ha perdido comunicación con la base!");
+        System.out.println("¡Haz fallado en tu misión de exploración!");
+    
+        printTime("\nEl viaje ha terminado abruptamente.\n--- MISIÓN FALLIDA ---\n");
+    
+    } else {
+        System.out.println("\nIniciando apagado seguro de la nave.");
+        System.out.print("Procedimiento iniciado: Desactivando sistemas de a bordo");
+            
+        for (int i = 0; i < 4; i++) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.print(".");
+        }
+    
+        System.out.println("\n--- SISTEMAS APAGADOS ---");
+        System.out.println("La nave se ha apagado correctamente, todos los sistemas han sido desactivados.");
+        printTime("\nProcedimiento completado con éxito.\n");
     }
+    
+    System.exit(0);
+}
 ```
 ## 8. Resumen Final
 ### 8.1. Conclusión:
