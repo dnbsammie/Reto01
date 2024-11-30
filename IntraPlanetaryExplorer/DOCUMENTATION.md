@@ -121,7 +121,6 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
     ```
     ### 4.5 **Evento 5 (Advertencia)**:
     Se genera una advertencia de posibles daños 
-    
     ```
         if (eventRandom.nextInt(100) < 10 && !eventHistory.contains("microAsteroidCollision")) {
             System.out.println("\n¡Colisión con micro-asteroides! El casco de la nave ha sido dañado.\n");
@@ -198,7 +197,6 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
     
             eventHistory.add("planetRingsDanger");
         }
-
     ```
     ### 4.10 **Evento 10 (Nave Robusta)**:
     Nave demasiado pesada y lenta para el viaje. Puede recuperar su velocidad normal.
@@ -225,7 +223,6 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
     ```
     ### 4.11 **Evento 11 (Nave Fragil)**:
     Nave demasiado fragil para el viaje. Puede evitar sufrir daño.
-
     ```
         if ((selectedShip.getToughness() < 40) && selectedPlanet.getEarthDistance() > 4000 && eventRandom.nextInt(100) < 15 && !eventHistory.contains("fragileShip")) {
             System.out.println("\n¡Alerta! La nave es demasiado frágil para afrontar las duras condiciones de este viaje largo.\n");
@@ -250,7 +247,7 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
    - Notificar al astronauta a cargo si el viaje fue exitoso o si la nave se quedó sin recursos.
 
 ## 6. **Interacción con el Usuario**: 
-   - El sistema debe proporcionar un menú interactivo para que el usuario elija las opciones disponibles
+- El sistema debe proporcionar un menú interactivo para que el usuario elija las opciones disponibles
     ```
     public static void showState(double distanceTraveled, double totalDistance, double elapsedDays, double totalTravelTime, String userId, Scanner input) {
             System.out.println("\n--- PANEL DE CONTROL ---");
@@ -285,95 +282,95 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
             System.out.println("\n--- MANTENTE ALERTA " + (userId != null ? userId : "") + " ---");
     }
     ```
-   - Notificar al astronauta a cargo si las entradas son validas bajo el número correspondiente.
+- Notificar al astronauta a cargo si las entradas son validas bajo el número correspondiente.
 
 ## 7. Componentes del Proyecto
 
 - **Clases:**
 - Planet
 
-```
-class Planet {
-    private final String name;
-    private final double earthDistance, timeTravel, recFuel;
-    private final boolean ringSystem;
+    ```
+    class Planet {
+        private final String name;
+        private final double earthDistance, timeTravel, recFuel;
+        private final boolean ringSystem;
 
-    public Planet(String name, double earthDistance, double timeTravel, double recFuel, boolean ringSystem) {
-        this.name = name;
-        this.earthDistance = earthDistance;
-        this.timeTravel = timeTravel;
-        this.recFuel = recFuel;
-        this.ringSystem = ringSystem;
+        public Planet(String name, double earthDistance, double timeTravel, double recFuel, boolean ringSystem) {
+            this.name = name;
+            this.earthDistance = earthDistance;
+            this.timeTravel = timeTravel;
+            this.recFuel = recFuel;
+            this.ringSystem = ringSystem;
+        }
+
+        public String getName() {return name;}
+        public double getEarthDistance() {return earthDistance;}
+        public double getTimeTravel() {return timeTravel;}
+        public double getRecFuel() {return recFuel;}
+        public boolean hasRingSystem() {return ringSystem;}
+
+        @Override
+        public String toString() {
+            return String.format(
+                    "Planeta: %s\nDistancia desde la tierra: %.2f millones de km\nTiempo de viaje: %.2f días\n" +
+                            "Combustible recomendado: %.2f%%\nTiene anillos: %s\n",
+                    name, earthDistance, timeTravel, recFuel, ringSystem ? "Sí" : "No");
+        }
     }
-
-    public String getName() {return name;}
-    public double getEarthDistance() {return earthDistance;}
-    public double getTimeTravel() {return timeTravel;}
-    public double getRecFuel() {return recFuel;}
-    public boolean hasRingSystem() {return ringSystem;}
-
-    @Override
-    public String toString() {
-        return String.format(
-                "Planeta: %s\nDistancia desde la tierra: %.2f millones de km\nTiempo de viaje: %.2f días\n" +
-                        "Combustible recomendado: %.2f%%\nTiene anillos: %s\n",
-                name, earthDistance, timeTravel, recFuel, ringSystem ? "Sí" : "No");
-    }
-}
-```
+    ```
 - SpaceShip
-```
-class SpaceShip {
-    private String name;
-    private int fuelCapacity, speed, cargoCapacity, toughness, shieldStrength, energyLevel, gravityControl, damage;
-    private String specialNote;
+    ```
+    class SpaceShip {
+        private String name;
+        private int fuelCapacity, speed, cargoCapacity, toughness, shieldStrength, energyLevel, gravityControl, damage;
+        private String specialNote;
 
-    public SpaceShip(String name, int fuelCapacity, int speed, int cargoCapacity, int toughness, int shieldStrength, int energyLevel, int gravityControl, int damage, String specialNote) {
-        this.name = name;
-        this.fuelCapacity = fuelCapacity;
-        this.speed = speed;
-        this.cargoCapacity = cargoCapacity;
-        this.toughness = toughness;
-        this.shieldStrength = shieldStrength;
-        this.energyLevel = energyLevel;
-        this.gravityControl = gravityControl;
-        this.damage = damage;
-        this.specialNote = specialNote;
+        public SpaceShip(String name, int fuelCapacity, int speed, int cargoCapacity, int toughness, int shieldStrength, int energyLevel, int gravityControl, int damage, String specialNote) {
+            this.name = name;
+            this.fuelCapacity = fuelCapacity;
+            this.speed = speed;
+            this.cargoCapacity = cargoCapacity;
+            this.toughness = toughness;
+            this.shieldStrength = shieldStrength;
+            this.energyLevel = energyLevel;
+            this.gravityControl = gravityControl;
+            this.damage = damage;
+            this.specialNote = specialNote;
+        }
+
+        public String getName() {return name;}
+        public void setName(String name) {this.name = name;}
+        public int getFuelCapacity() {return fuelCapacity;}
+        public void setFuelCapacity(int fuelCapacity) {this.fuelCapacity = fuelCapacity;}
+        public int getSpeed() {return speed;}
+        public void setSpeed(int speed) {this.speed = speed;}
+        public int getCargoCapacity() {return cargoCapacity;}
+        public void setCargoCapacity(int cargoCapacity) {this.cargoCapacity = cargoCapacity;}
+        public int getToughness() {return toughness;}
+        public void setToughness(int toughness) {this.toughness = toughness;}
+        public int getShieldStrength() {return shieldStrength;}
+        public void setShieldStrength(int shieldStrength) {this.shieldStrength = shieldStrength;}
+        public int getEnergyLevel() {return energyLevel;}
+        public void setEnergyLevel(int energyLevel) {this.energyLevel = energyLevel;}
+        public int getGravityControl() {return gravityControl;}
+        public void setGravityControl(int gravityControl) {this.gravityControl = gravityControl;    }
+        public int getDamage() {return damage;}
+        public void setDamage(int damage) {this.damage = damage;}
+        public String getSpecialNote() {return specialNote;}
+        public void setSpecialNote(String specialNote) {this.specialNote = specialNote;}    
+
+        public void showStats() {
+            System.out.printf("Nombre: %s\n", name);
+            System.out.printf("Capacidad de combustible: %d\n", fuelCapacity);
+            System.out.printf("Velocidad: %d\n", speed);
+            System.out.printf("Capacidad de carga: %d\n", cargoCapacity);
+            System.out.printf("Resistencia estructural: %d\n", toughness);
+            System.out.printf("Fortaleza del escudo: %d\n", shieldStrength);
+            System.out.printf("Nivel de energía: %d\n", energyLevel);
+            System.out.printf("Nota especial: %s\n", specialNote);
+        }
     }
-
-    public String getName() {return name;}
-    public void setName(String name) {this.name = name;}
-    public int getFuelCapacity() {return fuelCapacity;}
-    public void setFuelCapacity(int fuelCapacity) {this.fuelCapacity = fuelCapacity;}
-    public int getSpeed() {return speed;}
-    public void setSpeed(int speed) {this.speed = speed;}
-    public int getCargoCapacity() {return cargoCapacity;}
-    public void setCargoCapacity(int cargoCapacity) {this.cargoCapacity = cargoCapacity;}
-    public int getToughness() {return toughness;}
-    public void setToughness(int toughness) {this.toughness = toughness;}
-    public int getShieldStrength() {return shieldStrength;}
-    public void setShieldStrength(int shieldStrength) {this.shieldStrength = shieldStrength;}
-    public int getEnergyLevel() {return energyLevel;}
-    public void setEnergyLevel(int energyLevel) {this.energyLevel = energyLevel;}
-    public int getGravityControl() {return gravityControl;}
-    public void setGravityControl(int gravityControl) {this.gravityControl = gravityControl;    }
-    public int getDamage() {return damage;}
-    public void setDamage(int damage) {this.damage = damage;}
-    public String getSpecialNote() {return specialNote;}
-    public void setSpecialNote(String specialNote) {this.specialNote = specialNote;}    
-
-    public void showStats() {
-        System.out.printf("Nombre: %s\n", name);
-        System.out.printf("Capacidad de combustible: %d\n", fuelCapacity);
-        System.out.printf("Velocidad: %d\n", speed);
-        System.out.printf("Capacidad de carga: %d\n", cargoCapacity);
-        System.out.printf("Resistencia estructural: %d\n", toughness);
-        System.out.printf("Fortaleza del escudo: %d\n", shieldStrength);
-        System.out.printf("Nivel de energía: %d\n", energyLevel);
-        System.out.printf("Nota especial: %s\n", specialNote);
-    }
-}
-```
+    ```
 - Explorer
 ```
     public class Explorer {
@@ -385,8 +382,8 @@ class SpaceShip {
 - **Metodos:**
 
 - Main
-```
-public static void main(String[] args) {
+    ```
+    public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         loadResources();
     
@@ -428,10 +425,10 @@ public static void main(String[] args) {
             }
         }
     }
-```
+    ```
 - **Interacciónes:**
 - Menu principal
-```
+    ```
     public static void showMenu() {
         System.out.println("\n--- PANEL CENTRAL ---\n");
         System.out.println("1. Planeta de destino.");
@@ -441,9 +438,9 @@ public static void main(String[] args) {
         System.out.println("5. Salir de la nave.");
         System.out.print("\nElige una opción: ");
     }
-```
+    ```
 - Opciones
-```
+    ```
     public static void settingsManager(Scanner input, List<Planet> availablePlanets) {
         while (true) {
             System.out.println("\n--- CONFIGURACIONES ---");
@@ -466,9 +463,9 @@ public static void main(String[] args) {
             }
         }
     }
-```
+    ```
 - Estado y Barra de Progreso
-```
+    ```
     public static void showState(double distanceTraveled, double totalDistance, double elapsedDays, double totalTravelTime, String userId, Scanner input) {
         System.out.println("\n--- PANEL DE CONTROL ---");
         System.out.println("COMANDANTE " + (userId != null ? userId : ""));
@@ -525,7 +522,7 @@ public static void main(String[] args) {
             e.printStackTrace();
         }
     }
-```
+    ```
 - Salida final
 Utilizamos System.exit(0) por practicidad.
 ```
