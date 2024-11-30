@@ -39,9 +39,8 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
    - Durante el viaje, simular eventos aleatorios que afecten el progreso como desvios, fallos en el sistema o factores externos. 
    - Solicitar al usuario tomar decisiones para resolver los problemas (Metodo eventManager)
   
-    4.1 **Evento 1 (perdidad de combustible )**:
+    ### 4.1 **Evento 1 (perdidad de combustible )**:
     Durante el evento 1 se genera una probabilidad del 20% de que el evento se genere si se genera la nave pierde -10 unidades de combustible. El cual, tiene la probabilidad de recuperar 8 unidades de combustible si la respuesta a la pregunta hecha en el proceso de recuperación es correcta. 
-
     ```
     if (eventRandom.nextInt(100) < 20 && !eventHistory.contains("fuelLeak")) { // 20% de probabilidad
         System.out.println("\n¡Atención! La nave ha perdido parte de su combustible debido a una fuga.\n");
@@ -62,9 +61,8 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
         eventHistory.add("fuelLeak");
     }
     ```
-    4.2 **Evento 2 (Falla electronica)**:
+    ### 4.2 **Evento 2 (Falla electronica)**:
     durante el evento 2 la nave presentara una falla electronica con un 25% de ocurrir la cual reducidara la maniobralidad en -10. El cual tiene la probabilidad de reveritr la totalidad del daño echo por el evento respondiendo una pregunta si es correcto revierte; de lo contrario no.
-
     ```
     if (eventRandom.nextInt(100) < 25 && !eventHistory.contains("electronicFailure")) {
         System.out.println("\n¡Interferencia electromagnética detectada! Los sistemas de navegación están inestables.\n");
@@ -85,9 +83,8 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
         eventHistory.add("electronicFailure");
     }
     ```
-    4.3 **Evento 3 (Sobrecaliento del motor)**:
+    ### 4.3 **Evento 3 (Sobrecaliento del motor)**:
     Durante el evento 3 se genera con un 30% de ocurrir un sobrecaliento del motor el cual aumentara el daño de la nave en 5 unidades; el cual tiene la probabilidad de revertirse con la respuesta correcta de la pregunta. De lo contrario, el aumento del daño no se revertira.
-
     ```
         if (eventRandom.nextInt(100) < 30 && !eventHistory.contains("engineOverheat")) {
             System.out.println("\n¡Alerta! El motor está sobrecalentado debido a las altas temperaturas espaciales.\n");
@@ -109,9 +106,8 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
             eventHistory.add("engineOverheat");
         }
     ```
-    4.4 **Evento 4 (Daño adicional)**:
+    ### 4.4 **Evento 4 (Daño adicional)**:
     En el evento 4 se genera un daño adicional con una probabilidad del 15% de aparecer, el cual no tiene una forma de revertir el daño. 
-
     ```
         if (eventRandom.nextInt(100) < 15 && !eventHistory.contains("meteorImpact")) {
             System.out.println("\n¡Un meteorito ha impactado la nave! La nave ha sufrido daño adicional.\n");
@@ -123,7 +119,7 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
             eventHistory.add("meteorImpact");
         }
     ```
-    4.5 **Evento 5 (Advertencia)**:
+    ### 4.5 **Evento 5 (Advertencia)**:
     Se genera una advertencia de posibles daños 
     
     ```
@@ -138,9 +134,8 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
             eventHistory.add("microAsteroidCollision");
         }
     ```
-    4.6 **Evento 6 (Colisión de micro-asteroides)**:
+    ### 4.6 **Evento 6 (Colisión de micro-asteroides)**:
     Se genera una colisión de micro-asteroides el cual incrementa el daño y disminuye el combustible 
-
     ```
     if (random.nextInt(100) < 10) { // 10% de probabilidad
             System.out.println("¡Colisión con micro-asteroides! El casco de la nave ha sido dañado.");
@@ -148,7 +143,7 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
             selectedShip.setFuelCapacity(selectedShip.getFuelCapacity() - 3); // Pequeña pérdida de combustible
         }
     ```
-    4.7 **Evento 7 (Radiación espacial)**:
+    ### 4.7 **Evento 7 (Radiación espacial)**:
     Se genera una radiacion espaccial la cual disminuye la resistencia de la nave en -5 unidades 
    
     ```
@@ -159,9 +154,8 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
             eventHistory.add("spaceRadiation");
         }
     ```
-    4.8 **Evento 8 (Suministro de energia)**:
+    ### 4.8 **Evento 8 (Suministro de energia)**:
     La nave se está alejando demasiado del sol y no puede tomar energia de este (-5)
-
     ```
         if (selectedPlanet.getEarthDistance() > 4000 && eventRandom.nextInt(100) < 20 && !eventHistory.contains("energyGenerationIssue")) {
             System.out.println("\n¡Alerta! La nave está experimentando dificultades para generar energía debido a la distancia del Sol.\n");
@@ -182,9 +176,8 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
             eventHistory.add("energyGenerationIssue");
         }
     ```
-    4.9 **Evento 9 (Anillos del planeta)**:
+    ### 4.9 **Evento 9 (Anillos del planeta)**:
     La nave cruza por un planeta con anillos y puede ser penalizada con +5 de daño.
-
     ```
         if (selectedPlanet.hasRingSystem() && eventRandom.nextInt(100) < 20 && !eventHistory.contains("planetRingsDanger")) {
             System.out.println("\n¡Peligro! Estás acercándote a un planeta con anillos. Los fragmentos pueden dañar la nave.\n");
@@ -207,9 +200,8 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
         }
 
     ```
-    4.10 **Evento 10 (Nave Robusta)**:
+    ### 4.10 **Evento 10 (Nave Robusta)**:
     Nave demasiado pesada y lenta para el viaje. Puede recuperar su velocidad normal.
-
     ```
         if ((selectedShip.getToughness() > 90 || selectedShip.getCargoCapacity() > 350) && selectedPlanet.getEarthDistance() < 1000 && eventRandom.nextInt(100) < 15 && !eventHistory.contains("overweightShip")) {
             System.out.println("\n¡Advertencia! La nave es demasiado robusta para realizar un viaje eficiente a un planeta cercano como el tuyo.\n");
@@ -231,7 +223,7 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
             eventHistory.add("overweightShip");
         }
     ```
-    4.11 **Evento 11 (Nave Fragil)**:
+    ### 4.11 **Evento 11 (Nave Fragil)**:
     Nave demasiado fragil para el viaje. Puede evitar sufrir daño.
 
     ```
@@ -253,11 +245,11 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
         }
 
     ```
-6. **Monitoreo del Estado de Viaje**:
+## 5. **Monitoreo del Estado de Viaje**:
    - Mostrar en pantalla el progreso de viaje, tiempo restante y recursos disponibles . (Clase travelState)
    - Notificar al astronauta a cargo si el viaje fue exitoso o si la nave se quedó sin recursos.
 
-7. **Interacción con el Usuario**: 
+## 6. **Interacción con el Usuario**: 
    - El sistema debe proporcionar un menú interactivo para que el usuario elija las opciones disponibles
     ```
     public static void showState(double distanceTraveled, double totalDistance, double elapsedDays, double totalTravelTime, String userId, Scanner input) {
@@ -295,7 +287,7 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
     ```
    - Notificar al astronauta a cargo si las entradas son validas bajo el número correspondiente.
 
-## 5. Componentes del Juego
+## 7. Componentes del Proyecto
 
 - **Clases:**
 - Planet
@@ -582,22 +574,22 @@ Utilizamos System.exit(0) por practicidad.
         System.exit(0);
     }
 ```
-## 6. Resumen Final
-### 6.1. Conclusión:
+## 8. Resumen Final
+### 8.1. Conclusión:
 En particular, se ha agregado la mecánica de penalizar la nave en caso de que el jugador falle una pregunta clave sobre la optimización de la propulsión de la nave. Esta penalización afecta directamente a los atributos o estadisticas de la nave.
 
 Además, se asegura que los eventos no se repitan durante el mismo viaje mediante un sistema de historial de eventos (eventHistory), lo que otorga un control adicional sobre la dinámica del proyecto. Estas modificaciones no solo enriquecen la jugabilidad, sino que también crean una experiencia más dinámica y desafiante para el jugador, al introducir consecuencias significativas por decisiones incorrectas.
 
 Este enfoque no solo mejora la inmersión; sino que también brinda al jugador la oportunidad de aprender y ajustar sus decisiones en tiempo real, reflejando la importancia de la gestión eficiente de los recursos y sistemas de la nave en el contexto de un viaje espacial largo y peligroso.
-### 6.2. Notas de Versión (Changelog):
+### 8.2. Notas de Versión (Changelog):
 - Pendiente
-### 6.3. Creditos y Agradecimientos:
+### 8.3. Creditos y Agradecimientos:
 - Desarrolladores a cargo:
  - Luis Miguel Triana Rueda.
  - Samuel Esteban Rivera Mosquera.
 - Agradecimientos a:
  - [INSTRUCTOR]: Cesar Augusto Díaz Arriaga
  - [INSTRUCTOR]: Alfonso Lara
-### 6.4. Referencias::
+### 8.4. Referencias::
 - Sistema Solar, Wikipedia: https://es.wikipedia.org/wiki/Sistema_solar#Planetas
 - Combustible Espacial, Outerspace: https://outerspace.es/tecnologia-espacial/combustible-solido-para-cohetes-espaciales-una-innovacion-revolucionaria/
