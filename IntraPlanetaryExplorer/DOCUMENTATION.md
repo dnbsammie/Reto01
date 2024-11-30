@@ -35,7 +35,7 @@ El proyecto consiste en la interacción del usuario (Astronauta) con la consola 
    - Calcular la cantidad de combustible y oxígeno necesarios para el viaje según la distancia.
    - Permitir al usuario revisar y ajustar los recursos antes de partir (Metodo settingsManager)
 
-4. **Simulación de Eventos Aleatorios**: 
+## 4. **Simulación de Eventos Aleatorios**: 
    - Durante el viaje, simular eventos aleatorios que afecten el progreso como desvios, fallos en el sistema o factores externos. 
    - Solicitar al usuario tomar decisiones para resolver los problemas (Metodo eventManager)
   
