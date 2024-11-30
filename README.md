@@ -1,6 +1,6 @@
 <h1 align="center">RETO 01 - Simulador de Viaje Interplanetario 🚀</h1>
 
-<img align="center" width="100%"src="./assets/background.png"></img>
+<img src="./assets/background.png"></img>
 
 <h3>Introducción</h3>
 <p text-align="justify">Este programa simula un viaje interplanetario en el que el usuario selecciona un planeta y la cantidad de combustible para el viaje. El programa evalúa si es posible llegar al destino con el combustible proporcionado y realiza una cuenta regresiva de tiempo y consumo de combustible en paralelo utilizando hilos y sincronización.</p>
