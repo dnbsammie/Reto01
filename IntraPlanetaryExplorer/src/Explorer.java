@@ -139,9 +139,11 @@ public class Explorer {
         System.out.println("Fecha y hora actual de la nave:");
         System.out.println(now.format(format) + "\n");
     }
+
     public static double calculateTravelTime(double distance, int speed) {
         return (speed <= 0) ? Double.MAX_VALUE : distance / speed;
     }
+    
     private static int generateUserId() {
         return new Random().nextInt(9000) + 1000;
     }
