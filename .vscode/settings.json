@@ -1,0 +1,10 @@
+{
+    "java.project.sourcePaths": [
+        "spacesimulator/src"
+    ],
+    "java.project.outputPath": "spacesimulator/bin",
+    "java.project.referencedLibraries": [
+        "spacesimulator/lib/**/*.jar"
+    ],
+    "java.format.settings.url": ".vscode/java-formatter.xml"
+}
