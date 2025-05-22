@@ -132,20 +132,17 @@ spacesimulator/
     │   ├── MenuController.java
     │   ├── ResourceController.java
     │   └── SimulationController.java
+    ├── managers/
+    │   └── EventManager.java
     │
     ├── models/
     │   ├── Event.java
     │   ├── EventContext.java
     │   ├── Planet.java
     │   ├── Spaceship.java
-    │   └── TravelState.java
-    │
-    ├── managers/
-    │   └── EventManager.java
     │
     ├── utils/
     │   ├── ConsoleUtil.java
-    │   ├── RandomUtil.java
     │   └── TimeUtil.java
     │
     └── App.java
